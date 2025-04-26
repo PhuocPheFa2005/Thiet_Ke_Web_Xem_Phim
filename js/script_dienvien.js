@@ -283,3 +283,64 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Dữ liệu danh sách diễn viên
+const actors = [
+  { name: "Jack Alberts", link: "/HTML/dv1.html" },
+  { name: "Louis KooKoo", link: "/HTML/dv2.html" },
+  { name: "Ruy Jun-yeol", link: "/HTML/dv3.html" },
+  { name: "Malla Malmivaara", link: "/HTML/dv4.html" },
+  { name: "Ayane Sakura", link: "/HTML/dv5.html" },
+  { name: "John Travolta", link: "#" },
+  { name: "Stanley White Jr", link: "#" },
+  { name: "Brandon Flynn", link: "#" },
+  { name: "Jack Quaid", link: "#" },
+  { name: "Khushi Kapoor", link: "#" },
+  { name: "Chris Pratt", link: "#" },
+  { name: "Raúl Castillo", link: "#" },
+  { name: "Anthony Mackie", link: "#" },
+  { name: "Valeria Golino", link: "#" }
+];
+// Khi người dùng gõ vào ô tìm kiếm
+document.getElementById('searchInput').addEventListener('input', function () {
+const input = this.value.toLowerCase();
+const results = document.getElementById('searchResults');
+results.innerHTML = "";
+
+if (input.length === 0) {
+results.style.display = "none";
+return;
+}
+
+const matchedActors = actors.filter(actor => actor.name.toLowerCase().includes(input));
+
+if (matchedActors.length > 0) {
+matchedActors.forEach(actor => {
+const actorLink = document.createElement('a');
+actorLink.href = actor.link;
+actorLink.textContent = actor.name;
+actorLink.style.display = "block";
+actorLink.style.padding = "5px";
+actorLink.style.textDecoration = "none";
+actorLink.style.color = "black";
+
+actorLink.addEventListener('mouseover', function () {
+this.style.backgroundColor = "#f0f0f0";
+});
+actorLink.addEventListener('mouseout', function () {
+this.style.backgroundColor = "white";
+});
+
+results.appendChild(actorLink);
+});
+results.style.display = "block";
+results.style.position = "absolute";
+results.style.backgroundColor = "white";
+results.style.border = "1px solid #ccc";
+results.style.width = "250px";
+results.style.maxHeight = "300px";
+results.style.overflowY = "auto";
+results.style.zIndex = "999";
+} else {
+results.style.display = "none";
+}
+});
