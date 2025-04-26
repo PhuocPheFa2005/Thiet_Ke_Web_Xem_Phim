@@ -1,0 +1,32 @@
+.khung{
+  background-color: rgb(53, 50, 50);
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 25px;
+  display: none;
+  margin-top: 10px;
+}
+.QGTL h5{
+  font-size: 15px;
+}
+.QGTL{
+  color: aliceblue;
+  display: flex;
+  margin-bottom: 0px;
+}
+.DS{
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  cursor: pointer;
+}
+.DS li.selected {
+  color: yellow;
+}
+.DS li{font-size: 12px;}
+.DS li:hover{
+  color: yellow
+}
+.movie-item{
+  display: none;
+}

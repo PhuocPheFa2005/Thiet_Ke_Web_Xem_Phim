@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK - Phim Anh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles_phimle.css">
+    <link rel="stylesheet" href="/css/styles_dangky.css">
+    <link rel="stylesheet" href="/css/styles_quocgia.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar d-flex justify-content-between">
+            <a class="navbar-brand" href="/html/trangchu.html">
+                <img src="/images/logo.webp" alt="APK Movie">
+                <span data-key="site-name">APK</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phim, diễn viên" data-key="search-placeholder">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <div class="menu">
+                <a href="/html/chude.html" data-key="menu-topic">Chủ Đề</a>
+                <a href="/html/phimle.html" data-key="menu-movies">Phim Lẻ</a>
+                <a href="/html/phimbo.html" data-key="menu-series">Phim Bộ</a>
+                <div class="dropdown country-dropdown">
+                    <a class="dropdown-toggle" data-key="menu-country">Quốc gia</a>
+                    <div class="dropdown-menu">
+                        <a href="/html/phimVietNam.html" class="dropdown-item">Việt Nam</a>
+                        <a href="/html/phimAnh.html" class="dropdown-item">Anh</a>
+                        <a href="/html/phimMy.html" class="dropdown-item">Mỹ</a>
+                        <a href="/html/phimPhap.html" class="dropdown-item">Pháp</a>
+                    </div>
+                </div>
+                <a href="/html/Dienvien.html" data-key="menu-actors">Diễn Viên</a>
+            </div>
+            <div class="auth-buttons">
+                <div id="user-info" class="user-info" style="display: none;">
+                </div>
+                
+                <button class="btn btn-outline-light" data-key="btn-signup" onclick="openRegisterForm()">Đăng Ký</button>
+                <button class="btn btn-primary" data-key="btn-login" onclick="openLoginForm()">Đăng Nhập</button>
+              </div>
+              
+
+              <div id="overlay" class="overlay" style="display: none;">
+                <div class="form-container">
+                  <span class="close-btn" onclick="closeForm()">✖</span>
+              
+
+                  <div id="login-form" class="form-content">
+                    <h2>Đăng nhập</h2>
+                    <p>Nếu bạn chưa có tài khoản, <a href="#" onclick="showRegister()">đăng ký ngay</a></p>
+                    <input type="email" placeholder="Email (admin@example.com)" id="login-email" required />
+                    <input type="password" placeholder="Mật khẩu (admin123)" id="login-password" required />
+                    <button class="btn-submit" onclick="loginUser()">Đăng nhập</button>
+                    <a href="#">Quên mật khẩu?</a>
+                  </div>
+              
+              
+
+                  <div id="register-form" class="form-content" style="display: none;">
+                    <h2>Đăng ký</h2>
+                    <p>Nếu bạn đã có tài khoản, <a href="#" onclick="showLogin()">đăng nhập</a></p>
+                    <input type="text" placeholder="Tên hiển thị" id="register-username" required />
+                    <input type="email" placeholder="Email" id="register-email" required />
+                    <input type="password" placeholder="Mật khẩu" id="register-password" required />
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="register-confirm-password" required />
+                    <button class="btn-submit" onclick="registerUser()">Đăng ký</button>
+                  </div>
+              
+
+                  <div id="edit-profile-form" class="form-content" style="display: none;">
+                    <h2>Chỉnh sửa thông tin</h2>
+              
+         
+                    <div class="avatar-preview">
+                      <label for="edit-avatar">
+                        <img id="avatar-preview-img" src="/images/tron1.webp" alt="Ảnh đại diện" />
+                      </label>
+                    </div>
+              
+              
+                    <input type="file" id="edit-avatar" accept="image/*" onchange="previewAvatar()" style="display: none;" />
+              
+                    <label for="edit-username">Tên hiển thị</label>
+                    <input type="text" id="edit-username" placeholder="Tên hiển thị" required />
+              
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email" required />
+              
+                    <div class="form-buttons">
+                      <button class="btn-submit" onclick="saveProfileChanges()">💾 Lưu thay đổi</button>
+                      <button class="btn-submit logout-btn" onclick="logoutUser()">🚪 Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <h1 class="section-title" data-key="section-title">Phim Anh</h1>
+        <button class="btn btn-primary" id="openFilter" data-key="filter">
+            <i class="fas fa-filter"></i> Bộ Lọc</button>
+    <div class="khung" >
+        <div class="QGTL QG">
+          <h5>Năm Sản Xuất</h5>
+          <ul class="DS DSQG">
+            <li>2020</li>
+            <li>2021</li>
+            <li>2022</li>
+            <li>2023</li>
+            <li>2024</li>
+            <li>2025</li>
+          </ul>
+        </div>
+        <hr>
+        <div class="QGTL TL">
+          <h5>Thể Loại</h5>
+          <ul class="DS DSTL">
+            <li>Kinh Dị</li>
+            <li>Hành Động</li>
+            <li>Tình Cảm</li>
+            <li>Hài</li>
+          </ul>
+        </div>
+    </div>
+        <div class="movie-grid">
+            <div class="movie-item" data-title="Lãnh Địa Tử Chiến" data-year="2024"
+                data-desc="Hai gia tộc tội phạm khét tiếng ở London, nhà Harrigan và nhà Stevenson." data-imdb="8.0"
+                data-age="T16" data-duration="Phần 1" data-genres="Chính Kịch, Hành Động, Gay Cấn, Hình Sự"
+                data-image="/images/phimanhlon1.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh1.webp" alt="Lãnh Địa Tử Chiến">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Lãnh Địa Tử Chiến (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Vua Sói" data-year="2024"
+                data-desc="Ở loạt phim phiêu lưu giả tưởng hoành tráng này, một thường dân đến tuổi trưởng thành biết được mình là người cuối cùng của dòng dõi Người sói lâu đời"
+                data-imdb="6.6" data-age="T16" data-duration="Phần 1" data-genres="Thiếu Nhi, Hoạt Hình, Kỳ Ảo"
+                data-image="/images/phimanhlon2.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh2.webp" alt="Vua Sói">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Vua Sói (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Biến Cố Tuổi Thành Niên" data-year="2024"
+                data-desc="Khi một cậu bé 13 tuổi bị buộc tội giết bạn cùng lớp, gia đình cậu bé, bác sĩ trị liệu và thanh tra phụ trách đều tự hỏi: chuyện gì đã thực sự xảy ra?"
+                data-imdb="8.3" data-age="T16" data-duration="Phần 1" data-genres="Chính Kịch, Hình Sự, Tâm Lý"
+                data-image="/images/phimanhlon3.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh3.webp" alt="Biến Cố Tuổi Thành Niên">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Biến Cố Tuổi Thành Niên (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Năm Cuộc Hẹn Để Yêu" data-year="2024"
+                data-desc="Pia, một nhiếp ảnh gia quèn ở London, bị gia đình thục giục chuyện cưới chồng. Một đạo sư tâm linh tiên đoán cô sẽ gặp tình yêu đời mình trong năm buổi hẹn tiếp theo. "
+                data-imdb="5.3" data-age="T13" data-duration="1h 41m" data-genres="Tình Cảm, Hài, Tâm Lý, Lãng Mạn"
+                data-image="/images/phimanhlon4.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh4.webp" alt="Năm Cuộc Hẹn Để Yêu">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Năm Cuộc Hẹn Để Yêu (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Nỗi Sợ" data-year="2023"
+                data-desc="Martyn và Rebecca cùng hai con nhỏ chuyển đến một ngôi nhà xinh đẹp ở Glasgow để bắt đầu cuộc sống mới. "
+                data-imdb="5.9" data-age="T18" data-duration="Phần 1" data-genres="Bí Ẩn, Tâm Lý"
+                data-image="/images/phimanhlon5.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh5.webp" alt="Nỗi Sợ">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Nỗi Sợ (2023)</p>
+            </div>
+            <div class="movie-item" data-title="Hồi Kết Cận Kề" data-year="2023"
+                data-desc="Sau cuộc ly hôn ồn ào, một ngôi sao quần vợt, vợ cũ và các vị khách tụ họp tại một biệt thự ven biển. Nhưng khi có người bị sát hại, một thám tử phải tìm ra hung thủ."
+                data-imdb="6.2" data-age="T16" data-duration="Phần 1" data-genres="Chính Kịch, Gay Cấn, Hình Sự"
+                data-image="/images/phimanhlon6.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh6.webp" alt="Hồi Kết Cận Kề">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Hồi Kết Cận Kề (2023)</p>
+            </div>
+            <div class="movie-item" data-title="Mickey 17" data-year="2023"
+                data-desc="Lấy bối cảnh năm 2054, Mickey 17 kể về Mickey Barnes (Robert Pattinson), một nhân viên thay thế trong sứ mệnh thuộc địa hóa hành tinh băng giá Niflheim."
+                data-imdb="7.0" data-age="T16" data-duration="2h 18m"
+                data-genres="Chính Kịch, Chiếu Rạp, Khoa Học, Hài, Viễn Tưởng, Phiêu Lưu"
+                data-image="/images/phimanhlon7.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh7.webp" alt="Mickey 17">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Mickey 17 (2023)</p>
+            </div>
+            <div class="movie-item" data-title="Thị Trấn Chất Độc" data-year="2022"
+                data-desc="Khi hàng chục em bé ở Corby sinh ra trong tình trạng khuyết tật, các bà mẹ đứng lên đấu tranh để buộc thủ phạm phải đền tội."
+                data-imdb="7.6" data-age="T18" data-duration="Phần 1"
+                data-genres="Chính Kịch, Chính Luận, Khoa Học, Tâm Lý" data-image="/images/phimanhlon8.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh8.webp" alt="Thị Trấn Chất Độc">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thị Trấn Chất Độc (2022)</p>
+            </div>
+            <div class="movie-item" data-title="Một Ngàn Cú Đấm" data-year="2022"
+                data-desc="Mary Carr, bà trùm của băng đảng nữ tội phạm với cái tên Forty Elephants, và chạm trán với Sugar Goodson, trùm tội phạm và võ sĩ quyền anh khét tiếng."
+                data-imdb="7.4" data-age="T16" data-duration="Phần 1"
+                data-genres="Chính Kịch, Hành Động, Gay Cấn, Cổ Điển, Phiêu Lưu" data-image="/images/phimanhlon9.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh9.webp" alt="Một Ngàn Cú Đấm">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Một Ngàn Cú Đấm (2022)</p>
+            </div>
+            <div class="movie-item" data-title="Đặc Vụ Lau Kính" data-year="2021"
+                data-desc="Một cựu binh sĩ, hiện là người lau kính, phải giải cứu 300 con tin bị nhóm hoạt động cực đoan bắt giữ trong một buổi gala, khi cô phải đối mặt với tình huống nguy hiểm khi bị treo lơ lửng ngoài tòa nhà 50 tầng, trong đó có em trai của mình."
+                data-imdb="5.0" data-age="T16" data-duration="1h 36m" data-genres="Hành Động, Gay Cấn, Hình Sự"
+                data-image="/images/phimanhlon10.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh10.webp" alt="Đặc Vụ Lau Kính">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Đặc Vụ Lau Kính (2021)</p>
+            </div>
+            <div class="movie-item" data-title="Ruth Ellis: Tội Ác Tình Yêu" data-year="2020"
+                data-desc="Ruth đã giết người tình của mình, và câu chuyện khám phá những sự thật ẩn giấu liên quan đến vụ án, bao gồm vụ kiện pháp lý và những người có liên quan đến tội ác này."
+                data-imdb="6.9" data-age="T18" data-duration="Phần 1"
+                data-genres="Chính Kịch, Gay Cấn, Hình Sự, Cổ Điển" data-image="/images/phimanhlon11.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh11.webp" alt="Ruth Ellis: Tội Ác Tình Yêu">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Ruth Ellis: Tội Ác Tình Yêu (2020)</p>
+            </div>
+            <div class="movie-item" data-title="Tội Lỗi LonDon" data-year="2020"
+                data-desc="Noah, một cô gái 18 tuổi, chuyển từ Mỹ đến London sau khi mẹ cô, Ella, kết hôn với William, một doanh nhân giàu có người Anh. Tại đây, Noah gặp Nick, con trai của William và cũng là anh kế của cô."
+                data-imdb="6.2" data-age="T16" data-duration="1h 58m"
+                data-genres="Chính Kịch, Bí Ẩn, Lãng Mạn, Phiêu Lưu" data-image="/images/phimanhlon12.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh12.webp" alt="Tội Lỗi LonDon">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Tội Lỗi LonDon (2020)</p>
+            </div>
+            <div class="movie-item" data-title="Diều Hâu Gãy Cánh: Sống Sót Sau Trận Chiến" data-year="2020"
+                data-desc="Binh sĩ Mỹ và các chiến binh Somalia nhớ lại trận Mogadishu năm 1993 và vụ bắn hạ ba chiếc trực thăng Black Hawk nổi tiếng một cách vô cùng chi tiết."
+                data-imdb="7.4" data-age="T18" data-duration="Phần 1" data-genres="Tài Liệu, Chiến Tranh, Chính Trị"
+                data-image="/images/phimanhlon13.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh13.webp" alt="Diều Hâu Gãy Cánh: Sống Sót Sau Trận Chiến">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Diều Hâu Gãy Cánh: Sống Sót Sau Trận Chiến (2020)</p>
+            </div>
+            <div class="movie-item" data-title="Bear Grylls Săn Người Nổi Tiếng" data-year="2020"
+                data-desc="Holly Willoughby dẫn chương trình thi đấu lấy bối cảnh rừng rậm Costa Rica, nơi 12 người nổi tiếng trở thành con mồi của thợ săn đáng sợ Bear Grylls."
+                data-imdb="5.8" data-age="T18" data-duration="Phần 1"
+                data-genres="Gay Cấn, Truyền Hình Thực Tế, Phiêu Lưu" data-image="/images/phimanhlon14.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh14.webp" alt="Bear Grylls Săn Người Nổi Tiếng">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Bear Grylls Săn Người Nổi Tiếng (2020)</p>
+            </div>
+            <div class="movie-item" data-title="Tia Nắng: Người Lính Gục Ngã" data-year="2020"
+                data-desc="Một cựu chiến binh kêu gọi những người bạn từ quá khứ của mình truy tìm những kẻ chịu trách nhiệm cho cái chết của con gái mình."
+                data-imdb="4.3" data-age="T16" data-duration="1h 56m"
+                data-genres="Hành Động, Gay Cấn, Tâm Lý, Phiêu Lưu" data-image="/images/phimanhlon15.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh15.webp" alt="Tia Nắng: Người Lính Gục Ngã">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Tia Nắng: Người Lính Gục Ngã (2020)</p>
+            </div>
+            <div class="movie-item" data-title="Giải Mã Số Nguyên Tố" data-year="2020"
+                data-desc="Một sinh viên toán xuất sắc đang trên đà đạt được một bước đột phá lớn thì kẻ thù đen tối cố gắng ngăn cản anh."
+                data-imdb="6.3" data-age="T18" data-duration="Phần 1"
+                data-genres="Chính Kịch, Hình Sự, Tâm Lý, Phiêu Lưu" data-image="/images/phimanhlon16.webp">
+                <div class="movie-container">
+                    <img src="/images/phimanh16.webp" alt="Giải Mã Số Nguyên Tố">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Giải Mã Số Nguyên Tố (2020)</p>
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage" class="page-btn" data-key="previous-page">« Trước</button>
+            <span id="pageNumber">1</span>
+            <button id="nextPage" class="page-btn" data-key="next-page">Tiếp »</button>
+        </div>
+        <div id="movieTooltip" class="movie-tooltip">
+            <img id="tooltipImage" src="" alt="Poster">
+            <div class="tooltip-content">
+                <h3 id="tooltipTitle"></h3>
+                <p id="tooltipYear"></p>
+                <p id="tooltipDesc"></p>
+                <div class="tooltip-actions">
+                    <button class="watch-now">▶ Xem ngay</button>
+                    <button class="like-btn">❤️ Thích</button>
+                    <button class="details-btn">ℹ️ Chi tiết</button>
+                </div>
+                <div class="movie-info">
+                    <span class="imdb-rating">IMDb <strong>6.3</strong></span>
+                    <span class="age-rating">T18</span>
+                    <span class="duration">1h 54m</span>
+                </div>
+                <div class="movie-genres">
+                    <span>Gay Cấn</span> • <span>Kinh Dị</span> • <span>Bí Ẩn</span>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="footer-top">
+            <span class="sovereignty" data-key="territorial-sovereignty">⭐ Hoàng Sa & Trường Sa là của Việt Nam!</span>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/logo.webp" alt="APK Movie Logo">
+                <h2>APK Movie</h2>
+                <p data-key="phim-hay-apkmovie">Phim hay APK Movie</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://web.telegram.org/" target="_blank"><img src="/images/tele.webp" alt="Telegram"></a>
+                <a href="https://x.com/" target="_blank"><img src="/images/x.webp" alt="X"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="/images/fb.webp" alt="Facebook"></a>
+                <a href="https://tiktok.com/" target="_blank"><img src="/images/tiktok.webp" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="/images/ytb.webp" alt="YouTube"></a>
+                <a href="https://www.threads.net/" target="_blank"><img src="/images/threads.webp" alt="Threads"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/images/ins.webp" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="chinhsachbaomat.html" data-key="chinhsachbaomat">Chính sách bảo mật</a>
+            <a href="dieukhoan.html" data-key="dieukhoan">Điều khoản sử dụng</a>
+            <a href="gioithieu.html" data-key="gioithieu">Giới thiệu</a>
+            <a href="lienhe.html" data-key="lienhe">Liên hệ</a>
+        </div>
+        <div class="footer-categories">
+            <a href="#">Dongphim</a>
+            <a href="#">Ghienphim</a>
+            <a href="#">Motphim</a>
+            <a href="#">Subnhanh</a>
+        </div>
+        <div class="footer-description" data-key="quangcao">
+            APK Movie - Phim hay APK Movie - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng
+            tiếng
+            full
+            HD.
+            Kho phim mới không lỡ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung
+            Quốc,
+            Thái Lan,
+            Nhật Bản, Âu Mỹ... đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!
+        </div>
+        <div class="footer-copyright">
+            © 2025 APK Movie
+        </div>
+        </footer>
+        <div class="back-to-top" onclick="scrollToTop()">▲</div>
+        <script src="/js/script_dangky.js"></script>
+        <script src="/js/script_quocgia.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Bảo Mật - APK Movie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/styles_chinhsach.css">
+    <link rel="stylesheet" href="/CSS/styles_dangky.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar d-flex justify-content-between">
+            <a class="navbar-brand" href="/HTML/trangchu.html">
+                <img src="/IMAGES/logo.webp" alt="APK Movie">
+                <span data-key="site-name">APK</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phim, diễn viên" data-key="search-placeholder">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <div class="menu">
+                <a href="/HTML/chude.html" data-key="menu-topic">Chủ Đề</a>
+                <a href="/HTML/phimle.html" data-key="menu-movies">Phim Lẻ</a>
+                <a href="/HTML/phimbo.html" data-key="menu-series">Phim Bộ</a>
+                <div class="dropdown country-dropdown">
+                    <a class="dropdown-toggle" data-key="menu-country">Quốc gia</a>
+                    <div class="dropdown-menu">
+                        <a href="/html/phimVietNam.html" class="dropdown-item">Việt Nam</a>
+                        <a href="/html/phimAnh.html" class="dropdown-item">Anh</a>
+                        <a href="/html/phimMy.html" class="dropdown-item">Mỹ</a>
+                        <a href="/html/phimPhap.html" class="dropdown-item">Pháp</a>
+                    </div>
+                </div>
+                <a href="/HTML/Dienvien.html" data-key="menu-actors">Diễn Viên</a>
+            </div>
+            <div class="auth-buttons">
+                <div id="user-info" class="user-info" style="display: none;">
+                </div>
+                
+                <button class="btn btn-outline-light" data-key="btn-signup" onclick="openRegisterForm()">Đăng Ký</button>
+                <button class="btn btn-primary" data-key="btn-login" onclick="openLoginForm()">Đăng Nhập</button>
+              </div>
+              
+
+              <div id="overlay" class="overlay" style="display: none;">
+                <div class="form-container">
+                  <span class="close-btn" onclick="closeForm()">✖</span>
+              
+
+                  <div id="login-form" class="form-content">
+                    <h2>Đăng nhập</h2>
+                    <p>Nếu bạn chưa có tài khoản, <a href="#" onclick="showRegister()">đăng ký ngay</a></p>
+                    <input type="email" placeholder="Email (admin@example.com)" id="login-email" required />
+                    <input type="password" placeholder="Mật khẩu (admin123)" id="login-password" required />
+                    <button class="btn-submit" onclick="loginUser()">Đăng nhập</button>
+                    <a href="#">Quên mật khẩu?</a>
+                  </div>
+              
+              
+
+                  <div id="register-form" class="form-content" style="display: none;">
+                    <h2>Đăng ký</h2>
+                    <p>Nếu bạn đã có tài khoản, <a href="#" onclick="showLogin()">đăng nhập</a></p>
+                    <input type="text" placeholder="Tên hiển thị" id="register-username" required />
+                    <input type="email" placeholder="Email" id="register-email" required />
+                    <input type="password" placeholder="Mật khẩu" id="register-password" required />
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="register-confirm-password" required />
+                    <button class="btn-submit" onclick="registerUser()">Đăng ký</button>
+                  </div>
+              
+
+                  <div id="edit-profile-form" class="form-content" style="display: none;">
+                    <h2>Chỉnh sửa thông tin</h2>
+              
+         
+                    <div class="avatar-preview">
+                      <label for="edit-avatar">
+                        <img id="avatar-preview-img" src="/images/tron1.webp" alt="Ảnh đại diện" />
+                      </label>
+                    </div>
+              
+              
+                    <input type="file" id="edit-avatar" accept="image/*" onchange="previewAvatar()" style="display: none;" />
+              
+                    <label for="edit-username">Tên hiển thị</label>
+                    <input type="text" id="edit-username" placeholder="Tên hiển thị" required />
+              
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email" required />
+              
+                    <div class="form-buttons">
+                      <button class="btn-submit" onclick="saveProfileChanges()">💾 Lưu thay đổi</button>
+                      <button class="btn-submit logout-btn" onclick="logoutUser()">🚪 Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </nav>
+    </header>
+    <div class="new-layout">
+        <section class="about">
+            <h2 class="title">Chính Sách Bảo Mật - APK MOVIE</h2>
+            <p class="desc">Trải nghiệm xem phim mượt mà, chất lượng cao và hoàn toàn miễn phí!</p>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Thu thập thông tin</h3>
+                <ul>
+                    <li><b>KHI TRUY CẬP APK MOVIE, CHÚNG TÔI MUỐN THU THẬP MỘT SỐ THÔNG TIN</b></li>
+                    <li><b>Thông tin tự động:</b> Địa chỉ IP, loại trình duyệt, hệ điều hành, thời gian truy cập, trang
+                        bạn
+                        đã xem, v.v.</li>
+                    <li><b>Thông tin cá nhân (nếu có đăng ký tài khoản): </b> Họ tên, địa chỉ email, số điện thoại.</li>
+                    <li><b>Cookies và dữ liệu theo dõi:</b> Dữ liệu về sở thích xem phim, lịch sử tìm kiếm để cải thiện
+                        trải
+                        nghiệm người dùng.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i class=""></i>Mục đích sử dụng thông tin</h3>
+                <ul>
+                    <li><b>CHÚNG TÔI SỬ DỤNG THÔNG TIN THU THẬP ĐƯỢC ĐỂ</b></li>
+                    <li>Cải thiện nội dung và dịch vụ trên APK Phim.</li>
+                    <li>Cá nhân hóa trải nghiệm người dùng, hiển thị gợi ý phim phù hợp.</li>
+                    <li>Bảo vệ tài khoản, phát hiện và ngăn chặn các hoạt động gian lận hoặc vi phạm điều khoản sử dụng.
+                    </li>
+                    <li>Gửi thông báo về cập nhật mới, chương trình khuyến mãi hoặc nội dung nổi bật.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i> Bảo mật thông tin người dùng</h3>
+                <ul>
+                    <li>Mã hóa dữ liệu trong quá trình truyền tải.</li>
+                    <li>Giới hạn quyền truy cập nội bộ đối với dữ liệu cá nhân.</li>
+                    <li>Sử dụng tường lửa và hệ thống chống xâm nhập.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Cookies và công nghệ theo dõi</h3>
+                <ul>
+                    <li>Ghi nhớ thông tin đăng nhập và sở thích của bạn.</li>
+                    <li>Theo dõi hành vi sử dụng để cải thiện trải nghiệm xem phim.</li>
+                    <li>Hỗ trợ hiển thị quảng cáo phù hợp với sở thích cá nhân.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Chia sẻ thông tin và bên thứ ba</h3>
+                <ul>
+                    <li><b>APK MOVIE CÓ THỂ CHIA SẺ DỮ LIỆU CỦA BẠN VỚI</b></li>
+                    <li>Đối tác quảng cáo (chỉ ở dạng ẩn danh) để hiển thị nội dung phù hợp.</li>
+                    <li>Cơ quan pháp luật khi có yêu cầu hợp pháp.</li>
+                    <li>Nhà cung cấp dịch vụ bên thứ ba hỗ trợ vận hành website.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Liên kết các trang web bên ngoài</h3>
+                <ul>
+                    <li>Website APK MOVIE có thể chứa liên kết đến các trang web khác. Chúng tôi không chịu trách nhiệm
+                        về chính
+                        sách bảo mật của các trang web đó. Người dùng nên đọc kỹ điều khoản trước khi cung cấp thông tin
+                        cá nhân
+                        cho các bên thứ ba.
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Bảo vệ trẻ em</h3>
+                <ul>
+                    <li>APK MOVIE không hướng đến đối tượng dưới 13 tuổi. Nếu phát hiện tài khoản của trẻ em, chúng tôi
+                        có quyền
+                        chặn hoặc xóa tài khoản để đảm bảo an toàn.
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Thay đổi chính sách bảo mật</h3>
+                <ul>
+                    <li>Chúng tôi có thể cập nhật chính sách bảo mật bất cứ lúc nào để phù hợp với quy định pháp luật
+                        hoặc cải
+                        thiện dịch vụ. Khi có thay đổi quan trọng, chúng tôi sẽ thông báo đến người dùng qua email hoặc
+                        thông
+                        báo trên website.
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div class="feature-box">
+                <h3 class="color-title"><i></i>Liên Hệ với APK MOVIE</h3>
+                <p>
+                    Để biết thêm chi tiết hoặc có thắc mắc về dịch vụ, bạn vui lòng liên hệ với chúng tôi qua email
+                    <a href="mailto:lienhe@rophim.com"
+                        style="color: #ffcc00; text-decoration: none;">lienhe@apkmovie.com</a>
+                    hoặc qua trang
+                    <a href="/HTML/lienhe.html" style="color: #ffcc00; text-decoration: none;">Liên Hệ</a>
+                    trên website chính thức của chúng tôi.
+                </p>
+            </div>
+        </section>
+    </div>
+    <footer class="footer"></footer>
+    <div class="footer-top">
+        <span class="sovereignty" data-key="territorial-sovereignty">⭐ Hoàng Sa & Trường Sa là của Việt Nam!</span>
+    </div>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="/IMAGES/logo.webp" alt="APK Movie Logo">
+            <h2>APK Movie</h2>
+            <p data-key="phim-hay-apkmovie">Phim hay APK Movie</p>
+        </div>
+        <div class="footer-social">
+            <a href="https://web.telegram.org/" target="_blank"><img src="/IMAGES/tele.webp" alt="Telegram"></a>
+            <a href="https://x.com/" target="_blank"><img src="/IMAGES/x.webp" alt="X"></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="/IMAGES/fb.webp" alt="Facebook"></a>
+            <a href="https://tiktok.com/" target="_blank"><img src="/IMAGES/tiktok.webp" alt="TikTok"></a>
+            <a href="https://www.youtube.com/" target="_blank"><img src="/IMAGES/ytb.webp" alt="YouTube"></a>
+            <a href="https://www.threads.net/" target="_blank"><img src="/IMAGES/threads.webp" alt="Threads"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="/IMAGES/ins.webp" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-links">
+        <a href="/HTML/chinhsachbaomat.html" data-key="chinhsachbaomat">Chính sách bảo mật</a>
+        <a href="/HTML/dieukhoan.html" data-key="dieukhoan">Điều khoản sử dụng</a>
+        <a href="/HTML/gioithieu.html" data-key="gioithieu">Giới thiệu</a>
+        <a href="/HTML/lienhe.html" data-key="lienhe">Liên hệ</a>
+    </div>
+    <div class="footer-categories">
+        <a href="#">Dongphim</a>
+        <a href="#">Ghienphim</a>
+        <a href="#">Motphim</a>
+        <a href="#">Subnhanh</a>
+    </div>
+    <div class="footer-description" data-key="quangcao">
+        APK Movie - Phim hay APK Movie - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng tiếng
+        full
+        HD.
+        Kho phim mới không lỡ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung
+        Quốc,
+        Thái Lan,
+        Nhật Bản, Âu Mỹ... đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!
+    </div>
+    <div class="footer-copyright">
+        © 2025 APK Movie
+    </div>
+    </footer>
+    <div class="back-to-top" onclick="scrollToTop()">▲</div>
+    <script src="/js/script_dangky.js"></script>
+    <script src="/js/script_dieukhoan.js"></script>
+</body>
+
+</html>

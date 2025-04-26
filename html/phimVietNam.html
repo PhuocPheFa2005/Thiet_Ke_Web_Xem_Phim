@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK - Phim Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles_phimle.css">
+    <link rel="stylesheet" href="/css/styles_dangky.css">
+    <link rel="stylesheet" href="/css/styles_quocgia.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar d-flex justify-content-between">
+            <a class="navbar-brand" href="/html/trangchu.html">
+                <img src="/images/logo.webp" alt="APK Movie">
+                <span data-key="site-name">APK</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phim, diễn viên" data-key="search-placeholder">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <div class="menu">
+                <a href="/html/chude.html" data-key="menu-topic">Chủ Đề</a>
+                <a href="/html/phimle.html" data-key="menu-movies">Phim Lẻ</a>
+                <a href="/html/phimbo.html" data-key="menu-series">Phim Bộ</a>
+                <div class="dropdown country-dropdown">
+                    <a class="dropdown-toggle" data-key="menu-country">Quốc gia</a>
+                    <div class="dropdown-menu">
+                        <a href="/html/phimVietNam.html" class="dropdown-item">Việt Nam</a>
+                        <a href="/html/phimAnh.html" class="dropdown-item">Anh</a>
+                        <a href="/html/phimMy.html" class="dropdown-item">Mỹ</a>
+                        <a href="/html/phimPhap.html" class="dropdown-item">Pháp</a>
+                    </div>
+                </div>
+                <a href="/html/Dienvien.html" data-key="menu-actors">Diễn Viên</a>
+            </div>
+            <div class="auth-buttons">
+                <div id="user-info" class="user-info" style="display: none;">
+                </div>
+                
+                <button class="btn btn-outline-light" data-key="btn-signup" onclick="openRegisterForm()">Đăng Ký</button>
+                <button class="btn btn-primary" data-key="btn-login" onclick="openLoginForm()">Đăng Nhập</button>
+              </div>
+              
+
+              <div id="overlay" class="overlay" style="display: none;">
+                <div class="form-container">
+                  <span class="close-btn" onclick="closeForm()">✖</span>
+              
+
+                  <div id="login-form" class="form-content">
+                    <h2>Đăng nhập</h2>
+                    <p>Nếu bạn chưa có tài khoản, <a href="#" onclick="showRegister()">đăng ký ngay</a></p>
+                    <input type="email" placeholder="Email (admin@example.com)" id="login-email" required />
+                    <input type="password" placeholder="Mật khẩu (admin123)" id="login-password" required />
+                    <button class="btn-submit" onclick="loginUser()">Đăng nhập</button>
+                    <a href="#">Quên mật khẩu?</a>
+                  </div>
+              
+              
+
+                  <div id="register-form" class="form-content" style="display: none;">
+                    <h2>Đăng ký</h2>
+                    <p>Nếu bạn đã có tài khoản, <a href="#" onclick="showLogin()">đăng nhập</a></p>
+                    <input type="text" placeholder="Tên hiển thị" id="register-username" required />
+                    <input type="email" placeholder="Email" id="register-email" required />
+                    <input type="password" placeholder="Mật khẩu" id="register-password" required />
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="register-confirm-password" required />
+                    <button class="btn-submit" onclick="registerUser()">Đăng ký</button>
+                  </div>
+              
+
+                  <div id="edit-profile-form" class="form-content" style="display: none;">
+                    <h2>Chỉnh sửa thông tin</h2>
+              
+         
+                    <div class="avatar-preview">
+                      <label for="edit-avatar">
+                        <img id="avatar-preview-img" src="/images/tron1.webp" alt="Ảnh đại diện" />
+                      </label>
+                    </div>
+              
+              
+                    <input type="file" id="edit-avatar" accept="image/*" onchange="previewAvatar()" style="display: none;" />
+              
+                    <label for="edit-username">Tên hiển thị</label>
+                    <input type="text" id="edit-username" placeholder="Tên hiển thị" required />
+              
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email" required />
+              
+                    <div class="form-buttons">
+                      <button class="btn-submit" onclick="saveProfileChanges()">💾 Lưu thay đổi</button>
+                      <button class="btn-submit logout-btn" onclick="logoutUser()">🚪 Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <h1 class="section-title" data-key="section-title">Phim Việt Nam</h1>
+                <button class="btn btn-primary" id="openFilter" data-key="filter">
+                    <i class="fas fa-filter"></i> Bộ Lọc</button>
+            <div class="khung" >
+                <div class="QGTL QG">
+                  <h5>Năm Sản Xuất</h5>
+                  <ul class="DS DSQG">
+                    <li>2020</li>
+                    <li>2021</li>
+                    <li>2022</li>
+                    <li>2023</li>
+                    <li>2024</li>
+                    <li>2025</li>
+                  </ul>
+                </div>
+                <hr>
+                <div class="QGTL TL">
+                  <h5>Thể Loại</h5>
+                  <ul class="DS DSTL">
+                    <li>Kinh Dị</li>
+                    <li>Hành Động</li>
+                    <li>Tình Cảm</li>
+                    <li>Hài</li>
+                  </ul>
+                </div>
+            </div>
+        <div class="movie-grid">
+            <div class="movie-item" data-title="Mùa Len Trâu" data-year="2025" data-desc="Mùa Len Trâu" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hài" data-image="/images/phimvn1.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn1.webp" alt="Mùa Len Trâu">
+                    <span class="label"></span>
+                </div>
+                <p>Mùa Len Trâu (2025)</p>
+            </div>
+            <div class="movie-item" data-title="Ngôi Nhà Bươm Bướm" data-year="2025" data-desc="Ngôi Nhà Bươm Bướm"
+                data-imdb="0.0" data-age="T20" data-duration="10s - 30s" data-genres="Hài, Tình Cảm"
+                data-image="/images/phimvn2.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn2.webp" alt="Ngôi Nhà Bươm Bướm">
+                    <span class="Ngôi Nhà Bươm Bướm"></span>
+                </div>
+                <p>Ngôi Nhà Bươm Bướm (2025)</p>
+            </div>
+            <div class="movie-item" data-title="2 trong 1" data-year="2024" data-desc="2 trong 1" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hài, Tình Cảm" data-image="/images/phimvn3.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn3.webp" alt="2 trong 1">
+                    <span class="2 trong 1"></span>
+                </div>
+                <p>2 Trong 1 (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Khi Con Là Nhà" data-year="2024" data-desc="Khi Con Là Nhà"
+                data-imdb="0.0" data-age="T20" data-duration="10s - 30s" data-genres="Hài, Tình Cảm"
+                data-image="/images/phimvn4.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn4.webp" alt="Khi Con Là Nhà">
+                    <span class="Khi Con Là Nhà"></span>
+                </div>
+                <p>Khi Con Là Nhà (2024)</p>
+            </div>
+            <div class="movie-item" data-title="Hương Ga" data-year="2025" data-desc="Hương Ga" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hành Động" data-image="/images/phimvn5.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn5.webp" alt="Hương Ga">
+                    <span class="Hương Ga"></span>
+                </div>
+                <p>Hương Ga (2025)</p>
+            </div>
+            <div class="movie-item" data-title="Chị Mười Ba" data-year="2022" data-desc="Chị Mười Ba" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hài, Hành Động" data-image="/images/phimvn6.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn6.webp" alt="Chị Mười Ba">
+                    <span class="Chị Mười Ba"></span>
+                </div>
+                <p>Chị Mười Ba (2022)</p>
+            </div>
+            <div class="movie-item" data-title="Nhật Ký Bạch Tuyết" data-year="2022" data-desc="Nhật Ký Bạch Tuyết"
+                data-imdb="0.0" data-age="T20" data-duration="10s - 30s" data-genres="Hài"
+                data-image="/images/phimvn7.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn7.webp" alt="Nhật Ký Bạch Tuyết">
+                    <span class="Nhật Ký Bạch Tuyết"></span>
+                </div>
+                <p>Nhật Ký Bạch Tuyết (2022)</p>
+            </div>
+            <div class="movie-item" data-title="Bí Mật Thảm Đỏ" data-year="2022" data-desc="Bí Mật Thảm Đỏ"
+                data-imdb="0.0" data-age="T20" data-duration="10s - 30s" data-genres="Kinh Dị"
+                data-image="/images/phimvn8.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn8.webp" alt="Bí Mật Thảm Đỏ">
+                    <span class="Bí Mật Thảm Đỏ"></span>
+                </div>
+                <p>Bí Mật Thảm Đỏ (2022)</p>
+            </div>
+            <div class="movie-item" data-title="Lời Hứa Của Cha" data-year="2023" data-desc="Lời Hứa Của Cha" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hài, Tình Cảm" data-image="/images/phimvn9.webp">
+                <div class="movie-container">
+                    <img src="/images/Phimvn9.webp" alt= "Lời Hứa Của Cha">
+                    <span class="Lời Hứa Của Cha"></span>
+                </div>
+                <p>Lời Hứa Của Cha (2023)</p>
+            </div>
+            <div class="movie-item" data-title="Tèo Em" data-year="2023" data-desc="Tèo Em" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Hài" data-image="/images/phimvn10.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn10.webp" alt="Tèo Em">
+                    <span class="Tèo Em"></span>
+                </div>
+                <p>Tèo Em (2023)</p>
+            </div>
+            <div class="movie-item" data-title="Đảo Của Dân Ngụ Cư" data-year="2021" data-desc="Đảo Của Dân Ngụ Cư"
+                data-imdb="0.0" data-age="T20" data-duration="10s - 30s" data-genres="Tình Cảm"
+                data-image="/images/phimvn11.webp">
+                <div class="movie-container">
+                    <img src="/images/phimvn11.webp" alt="Đảo Của Dân Ngụ Cư">
+                    <span class="Đảo Của Dân Ngụ Cư"></span>
+                </div>
+                <p>Đảo Của Dân Ngụ Cư (2021)</p>
+            </div>
+            <div class="movie-item" data-title="Bố Già" data-year="2025" data-desc="Buông Tay" data-imdb="0.0"
+                data-age="T20" data-duration="10s - 30s" data-genres="Tình Cảm" data-image="/images/Phimvn12.webp">
+                <div class="movie-container">
+                    <img src="/images/Phimvn12.webp" alt="Bố Già">
+                    <span class="Bố Già"></span>
+                </div>
+                </p>Bố Già (2025)</p>
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage" class="page-btn" data-key="previous-page">« Trước</button>
+            <span id="pageNumber">1</span>
+            <button id="nextPage" class="page-btn" data-key="next-page">Tiếp »</button>
+        </div>
+        <div id="movieTooltip" class="movie-tooltip">
+            <img id="tooltipImage" src="" alt="Poster">
+            <div class="tooltip-content">
+                <h3 id="tooltipTitle"></h3>
+                <p id="tooltipYear"></p>
+                <p id="tooltipDesc"></p>
+                <div class="tooltip-actions">
+                    <a href="#"> <button class="watch-now">▶ Xem ngay</button></a>
+                    <a href="#"> <button class="details-btn">ℹ️ Chi tiết</button></a>
+                    <a href="#"><button class="like-btn">❤️ Thích</button></a>
+                </div>
+                <div class="movie-info">
+                    <span class="imdb-rating">IMDb <strong>6.3</strong></span>
+                    <span class="age-rating">T18</span>
+                    <span class="duration">1h 54m</span>
+                </div>
+                <div class="movie-genres">
+                    <span>Gay Cấn</span> • <span>Kinh Dị</span> • <span>Bí Ẩn</span>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="footer-top">
+            <span class="sovereignty" data-key="territorial-sovereignty">⭐ Hoàng Sa & Trường Sa là của Việt Nam!</span>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/logo.webp" alt="APK Movie Logo">
+                <h2>APK Movie</h2>
+                <p data-key="phim-hay-apkmovie">Phim hay APK Movie</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://web.telegram.org/" target="_blank"><img src="/images/tele.webp" alt="Telegram"></a>
+                <a href="https://x.com/" target="_blank"><img src="/images/x.webp" alt="X"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="/images/fb.webp" alt="Facebook"></a>
+                <a href="https://tiktok.com/" target="_blank"><img src="/images/tiktok.webp" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="/images/ytb.webp" alt="YouTube"></a>
+                <a href="https://www.threads.net/" target="_blank"><img src="/images/threads.webp" alt="Threads"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/images/ins.webp" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="chinhsachbaomat.html" data-key="chinhsachbaomat">Chính sách bảo mật</a>
+            <a href="dieukhoan.html" data-key="dieukhoan">Điều khoản sử dụng</a>
+            <a href="gioithieu.html" data-key="gioithieu">Giới thiệu</a>
+            <a href="lienhe.html" data-key="lienhe">Liên hệ</a>
+        </div>
+        <div class="footer-categories">
+            <a href="#">Dongphim</a>
+            <a href="#">Ghienphim</a>
+            <a href="#">Motphim</a>
+            <a href="#">Subnhanh</a>
+        </div>
+        <div class="footer-description" data-key="quangcao">
+            APK Movie - Phim hay APK Movie - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng
+            tiếng
+            full
+            HD.
+            Kho phim mới không lỡ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung
+            Quốc,
+            Thái Lan,
+            Nhật Bản, Âu Mỹ... đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!
+        </div>
+        <div class="footer-copyright">
+            © 2025 APK Movie
+        </div>
+        </footer>
+        <div class="back-to-top" onclick="scrollToTop()">▲</div>
+        <script src="/js/script_dangky.js"></script>
+        <script src="/js/script_phimvietnam.js"></script>
+        <script src="/js/script_quocgia.js"></script>
+</body>
+
+</html>

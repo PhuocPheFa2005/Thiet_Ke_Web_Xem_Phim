@@ -1,0 +1,312 @@
+/* Form Container */
+.form-container {
+  background: #1e1e2d;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Form Content */
+.form-content {
+  display: none;
+}
+
+.form-content h2 {
+  margin-bottom: 10px;
+}
+
+.form-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  background: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Hiển thị mặc định form đăng nhập */
+#login-form {
+  display: block;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* ====== CẬP NHẬT GIAO DIỆN BÁO LỖI ====== */
+.error-msg {
+  color: #ff0000;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  display: none; /* Ẩn mặc định */
+  text-align: left;
+}
+
+/* Hiển thị thông báo thành công */
+.success-msg {
+  color: #28a745;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  display: none; /* Ẩn mặc định */
+  text-align: left;
+}
+
+/* Viền đỏ và hiệu ứng rung khi nhập sai */
+.input-error {
+  border: 2px solid #ff0000 !important;
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Hiệu ứng rung */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+/* Overlay - nền tối mờ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Màu đen với độ mờ 70% */
+  display: none; /* Mặc định ẩn */
+  justify-content: center;
+  align-items: center;
+  z-index: 1001; /* Đảm bảo hiển thị phía trên */
+}
+
+/* Hộp form đăng nhập */
+.form-container {
+  background: #1a1a2e;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  position: relative;
+  text-align: center;
+  z-index: 2000;
+}
+
+/* Nút đóng */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Kiểm soát kích thước của avatar */
+#user-avatar img {
+  width: 40px; /* Đặt kích thước của avatar ngang bằng với nút đăng ký và đăng nhập */
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Ẩn form chỉnh sửa khi không cần thiết */
+#edit-profile-form {
+  display: none;
+}
+
+/* Style cho phần người dùng (avatar + chào mừng) */
+.user-info {
+  display: flex;
+  margin-right: 10%;
+  align-items: center;
+  margin-left: -30%;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#user-avatar {
+  cursor: pointer; /* Chỉ định rằng người dùng có thể nhấn vào avatar */
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Hiển thị form chỉnh sửa */
+#edit-profile-form {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+#edit-profile-form input {
+  margin-bottom: 10px;
+}
+
+/* Style cho các nút đăng xuất */
+#logout-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Hiển thị thông tin người dùng khi đăng nhập */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+/* Chỉnh sửa hiển thị và hiệu ứng của thông báo đăng xuất thành công */
+.logout-msg {
+  color: #28a745;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  display: none;
+  text-align: left;
+}
+
+/* Chỉnh sửa thông báo lỗi */
+.error-msg {
+  color: #ff0000;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  display: none;
+  text-align: left;
+}
+
+/* Ẩn tất cả các phần tử liên quan đến giao diện */
+#overlay, #login-form, #register-form, #user-info {
+  display: none;
+}
+/* Ẩn nút đăng ký và đăng nhập ngay khi tải trang */
+.auth-buttons [data-key='btn-signup'],
+.auth-buttons [data-key='btn-login'] {
+  display: none;
+}
+
+/* Nút form chỉnh sửa thông tin */
+.avatar-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 200px; /* Điều chỉnh chiều rộng của avatar bằng với nút đăng ký hoặc đăng nhập */
+  max-width: 100%; /* Đảm bảo không vượt quá chiều rộng của màn hình */
+  margin: 0 auto;  /* Canh giữa avatar */
+}
+
+/* Các thuộc tính cho hình ảnh avatar */
+#avatar-preview-img {
+  width: 100px;           /* Kích thước nhỏ hơn */
+  height: 100px;
+  object-fit: cover;      /* Giữ tỉ lệ không bị méo */
+  border-radius: 50%;     /* Làm tròn ảnh */
+  border: 2px solid #ccc; /* Viền nhẹ */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#avatar-preview-img:hover {
+  transform: scale(1.05); /* Nhẹ nhàng phóng to khi hover */
+}
+
+.avatar-frame {
+  position: relative;
+  display: inline-block;
+  border: 3px solid #4CAF50;
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.avatar-frame:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* === PHẦN THÊM MỚI === */
+/* Các kiểu khung avatar */
+.avatar-frame {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Các mẫu khung khác nhau */
+.frame-default { border: 3px solid #4CAF50; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.frame-gold { border: 3px solid #FFD700; box-shadow: 0 0 10px #FFD700; }
+.frame-red { border: 3px solid #FF5252; box-shadow: 0 0 0 2px white, 0 0 0 4px #FF5252; }
+.frame-black { border: 3px solid #333; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.frame-neon { border: 3px solid #00FFFF; box-shadow: 0 0 10px #00FFFF; }
+
+/* Hiển thị các lựa chọn khung */
+.frame-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.frame-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.frame-option.selected {
+  border: 2px solid #333;
+}

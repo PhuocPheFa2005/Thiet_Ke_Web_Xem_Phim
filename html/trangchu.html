@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles_trangchu.css">
+    <link rel="stylesheet" href="/css/styles_dangky.css">
+</head>
+
+<body>
+    
+    <header style="margin-bottom: 0px;">
+        <nav class="navbar d-flex justify-content-between">
+            <a class="navbar-brand" href="/html/trangchu.html">
+                <img src="/images/logo.webp" alt="APK Movie">
+                <span data-key="site-name">APK</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phim, diễn viên" data-key="search-placeholder">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <div class="menu">
+                <a href="/html/chude.html" data-key="menu-topic">Chủ Đề</a>
+                <a href="/html/phimle.html" data-key="menu-movies">Phim Lẻ</a>
+                <a href="/html/phimbo.html" data-key="menu-series">Phim Bộ</a>
+                <div class="dropdown country-dropdown">
+                    <a class="dropdown-toggle" data-key="menu-country">Quốc gia</a>
+                    <div class="dropdown-menu">
+                        <a href="/html/phimVietNam.html" class="dropdown-item">Việt Nam</a>
+                        <a href="/html/phimAnh.html" class="dropdown-item">Anh</a>
+                        <a href="/html/phimMy.html" class="dropdown-item">Mỹ</a>
+                        <a href="/html/phimPhap.html" class="dropdown-item">Pháp</a>
+                    </div>
+                </div>
+                <a href="/html/Dienvien.html" data-key="menu-actors">Diễn Viên</a>
+            </div>
+
+            <div class="auth-buttons">
+
+                <div id="user-info" class="user-info" style="display: none;">
+
+                </div>
+                
+
+                <button class="btn btn-outline-light" data-key="btn-signup" onclick="openRegisterForm()">Đăng Ký</button>
+                <button class="btn btn-primary" data-key="btn-login" onclick="openLoginForm()">Đăng Nhập</button>
+              </div>
+              
+
+              <div id="overlay" class="overlay" style="display: none;">
+                <div class="form-container">
+                  <span class="close-btn" onclick="closeForm()">✖</span>
+              
+  
+                  <div id="login-form" class="form-content">
+                    <h2>Đăng nhập</h2>
+                    <p>Nếu bạn chưa có tài khoản, <a href="#" onclick="showRegister()">đăng ký ngay</a></p>
+                    <input type="email" placeholder="Email (admin@example.com)" id="login-email" required />
+                    <input type="password" placeholder="Mật khẩu (admin123)" id="login-password" required />
+                    <button class="btn-submit" onclick="loginUser()">Đăng nhập</button>
+                    <a href="#">Quên mật khẩu?</a>
+                  </div>
+              
+              
+            
+                  <div id="register-form" class="form-content" style="display: none;">
+                    <h2>Đăng ký</h2>
+                    <p>Nếu bạn đã có tài khoản, <a href="#" onclick="showLogin()">đăng nhập</a></p>
+                    <input type="text" placeholder="Tên hiển thị" id="register-username" required />
+                    <input type="email" placeholder="Email" id="register-email" required />
+                    <input type="password" placeholder="Mật khẩu" id="register-password" required />
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="register-confirm-password" required />
+                    <button class="btn-submit" onclick="registerUser()">Đăng ký</button>
+                  </div>
+              
+                  <!-- Form chỉnh sửa thông tin -->
+                  <div id="edit-profile-form" class="form-content" style="display: none;">
+                    <h2>Chỉnh sửa thông tin</h2>
+              
+                    <!-- Ảnh đại diện - click vào để thay đổi -->
+                    <div class="avatar-preview">
+                      <label for="edit-avatar">
+                        <img id="avatar-preview-img" src="/images/tron1.webp" alt="Ảnh đại diện" />
+                      </label>
+                    </div>
+              
+                    <!-- Input file bị ẩn -->
+                    <input type="file" id="edit-avatar" accept="image/*" onchange="previewAvatar()" style="display: none;" />
+              
+                    <label for="edit-username">Tên hiển thị</label>
+                    <input type="text" id="edit-username" placeholder="Tên hiển thị" required />
+              
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email" required />
+              
+                    <div class="form-buttons">
+                      <button class="btn-submit" onclick="saveProfileChanges()">💾 Lưu thay đổi</button>
+                      <button class="btn-submit logout-btn" onclick="logoutUser()">🚪 Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+                      
+        </nav>
+    </header>
+    <div class="container-xxl mt-4">
+        <div class="banner" id="banner">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <div>
+                    <div class="title-container">
+                        <h1 id="movie-title" class="title-h1">BÓNG MA ANH QUỐC</h1>
+                    </div>
+
+                    <div class="info-badges">
+                        <div class="info-tags">
+                            <a id="movie-imdb" href="https://www.imdb.com/" class="tag imdb"
+                                title="Điểm đánh giá trên IMDb">IMDb 8.7</a>
+                            <a id="movie-age" href="https://example.com/t16" class="tag age"
+                                title="Độ tuổi cho phép">T18</a>
+                            <a id="movie-year" href="https://example.com/2021" class="tag year"
+                                title="Năm phát hành">2013</a>
+                            <a id="movie-part" href="https://example.com/phan-3" class="tag part"
+                                title="Xem phần 3">Phần 6</a>
+                            <a id="movie-episode" href="https://example.com/tap-5" class="tag episode"
+                                title="Xem tập 5">Tập 6</a>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="sub-tags">
+                            <a href="https://example.com/chinh-kich" class="sub-tag" title="Thể loại Chính Kịch">Chính
+                                Kịch</a>
+                            <a href="https://example.com/hanh-dong" class="sub-tag" title="Thể loại Hành Động">Hành
+                                Động</a>
+                            <a href="https://example.com/ky-ao" class="sub-tag" title="Thể loại Kỳ Ảo">Gây Cấn</a>
+                            <a href="https://example.com/ky-ao" class="sub-tag" title="Thể loại Kỳ Ảo">Hình Sự</a>
+                            <a href="https://example.com/gia-tuong" class="sub-tag" title="Thể loại Giả Tưởng">Cổ
+                                Điển</a>
+                            <a href="https://example.com/phieu-luu" class="sub-tag" title="Thể loại Phiêu Lưu">Phiêu
+                                Lưu</a>
+                        </div>
+                    </div>
+                </div>
+                <p id="movie-description" class="mt-3">Được đặt trong bối cảnh nước Anh đầu thế kỷ 19, Peaky Blinders
+                    nói về gia đình Shelby, những người cầm đầu băng đảng Peaky Blinders khét tiếng trong thế giới ngầm
+                    với bộ não là Tommy Shelby, đứa con trai thứ hai. Bộ phim là hành trình thăng tiến trong thế giới
+                    ngầm của Tommy bằng những mưu mô, thủ đoạn tàn nhẫn. Ngoài ra, người xem cũng sẽ được gặp lại nhiều
+                    nhân vật và sự kiện lịch sử có thật như Winston Churchill, cuộc kháng chiến đòi độc lập của Ai-len
+                    với Anh Quốc ...</p>
+                <br>
+                <div class="button-group">
+                    <button id="play-btn" class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="icon-group">
+                        <button id="favorite-btn" class="favorite-btn"><i class="far fa-heart"></i></button>
+                        <button id="info-btn" class="info-btn"><i class="fas fa-info-circle"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="movie-list">
+                <img src="/images/little1.webp" class="thumbnail"
+                    onclick="changeBackground('/images/trangchu1.webp', this)">
+                <img src="/images/little2.webp" class="thumbnail"
+                    onclick="changeBackground('/images/trangchu2.webp', this)">
+                <img src="/images/little3.webp" class="thumbnail"
+                    onclick="changeBackground('/images/trangchu3.webp', this)">
+                <img src="/images/little4.webp" class="thumbnail"
+                    onclick="changeBackground('/images/trangchu4.webp', this)">
+                <img src="/images/little5.webp" class="thumbnail"
+                    onclick="changeBackground('/images/trangchu5.webp', this)">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container mt-4">
+        <div class="section">
+            <h3 class="section-title text-light">Bạn đang quan tâm gì?</h3>
+            <div class="category-container">
+                <a href="/html/Marvel.html" style="text-decoration: none;">
+                    <div class="category-card marvel"><c>Marvel</c><small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/phuthuy.html" style="text-decoration: none;">
+                    <div class="category-card witch"><c>Phù Thủy</c> <small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/sitcom.html" style="text-decoration: none;">
+                    <div class="category-card sitcom"><c>Sitcom</c> <small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/chualanh.html" style="text-decoration: none;">
+                    <div class="category-card dub"><c>Chữa Lành</c> <small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/xuyenkhong.html" style="text-decoration: none;">
+                    <div class="category-card time"><c>Xuyên Không</c> <small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/phim9x.html" style="text-decoration: none;">
+                    <div class="category-card movies90"><c>Phim 9x</c> <small>Xem chủ đề &gt;</small></div>
+                </a>
+                <a href="/html/chude.html" style="text-decoration: none;">
+                    <div class="category-card more-topics">+3 chủ đề</div>
+                </a>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="section">
+                <h3 class="section-title text-light">Phim Hàn Quốc Mới</h3>
+                <div id="carouselHan" class="carousel slide carousel-han" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo1.html"> <img src="/images/Lmáo.webp" alt="Kẻ Thù Dấu Yêu">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 12</div>
+                                        <div class="tag tag-tm">TM. 12</div>
+                                    </div>
+                                    <div class="movie-info">Kẻ Thù Dấu Yêu</div>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo1.html">  <img src="/images/Lmao2.webp" alt="Lưỡi Dao Hiểm Hóc">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 6</div>
+                                        <div class="tag tag-tm">TM. 4</div>
+                                    </div>
+                                    <div class="movie-info">Lưỡi Dao Hiểm Hóc</div>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo7.html"><img src="/images/Lmao3.webp"
+                                            alt="Quán Ăn của Ngài Heo">
+                                        <div class="tags">
+                                            <div class="tag tag-pd">PĐ. 3</div>
+                                        </div>
+                                        <div class="movie-info">Quán Ăn của Ngài Heo</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo1.html">  <img src="/images/mainhanquoc1.webp" alt="Bảo Hiểm Ly Hôn">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 2</div>
+                                    </div>
+                                    <div class="movie-info">Bảo Hiểm Ly Hôn</div>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo1.html"> <img src="/images/mainhanquoc2.webp" alt="Anh Em Đại Bàng">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 18</div>
+                                        <div class="tag tag-tm">TM. 6</div>
+                                    </div>
+                                    <div class="movie-info">Anh Em Đại Bàng</div>
+                                </div>
+                               <div class="movie-card">
+                                <a href="/html/chieuphimbo1.html"><img src="/images/mainhanquoc3.webp" alt="Quý Cô Seon Ju Phục Thù">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 83</div>
+                                    </div>
+                                    <div class="movie-info">Quý Cô Seon Ju Phục Thù</div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <img src="/images/mainhanquoc4.webp" alt="Trò Chơi Lọ Lem">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 81</div>
+                                    </div>
+                                    <div class="movie-info">Trò Chơi Lọ Lem</div>
+                                </div>
+                                <div class="movie-card">
+                                    <img src="/images/main hanquoc5.webp" alt="Bậc Thầy Đàm Phán">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 8</div>
+                                        <div class="tag tag-tm">TM. 6</div>
+                                    </div>
+                                    <div class="movie-info">Bậc Thầy Đàm Phán</div>
+                                </div>
+                                <div class="movie-card">
+                                    <img src="/images/mainhanquoc6.webp" alt="Phải Lòng Nàng Phù Thủy">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 10</div>
+                                        <div class="tag tag-tm">TM. 10</div>
+                                    </div>
+                                    <div class="movie-info">Phải Lòng Nàng Phù Thủy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselHan"
+                        data-bs-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHan"
+                        data-bs-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container mt-4">
+            <div class="section">
+                <h3 class="section-title text-light">Phim Trung Quốc mới</h3>
+                <div id="carouselChina" class="carousel slide carousel-china" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html"><img src="/images/TQ1.webp" alt="Người Chơi Cờ">
+                                        <div class="tags">
+                                            <div class="tag tag-pd">PĐ. 10</div>
+                                        </div>
+                                        <div class="movie-info">Người Chơi Cờ</div>
+                                    </a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo4.html"><img src="/images/TQ2.webp" alt="Con Tim Sắt Đá">
+                                        <div class="tags">
+                                            <div class="tag tag-pd">PĐ. 20</div>
+                                        </div>
+                                        <div class="movie-info">Con Tim Sắt Đá</div>
+                                    </a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">   <img src="/images/TQ3.webp" alt="Nữ Tuần Đặc Cảnh: Đội Đột Kích Chim Ruồi">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 7</div>
+                                    </div>
+                                    <div class="movie-info">Nữ Tuần Đặc Cảnh: Đội Đột Kích ...</div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html"> <img src="/images/TQ4.webp" alt="Cung Tường Yếm">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 9</div>
+                                    </div>
+                                    <div class="movie-info">Cung Tường Yếm</div></a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html"> <img src="/images/TQ5.webp" alt="Phỏng Trang">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 27</div>
+                                    </div>
+                                    <div class="movie-info">Phỏng Trang</div></a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">     <img src="/images/TQ6.webp" alt="Niệm Vô Song">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 18</div>
+                                        <div class="tag tag-tm">TM. 16</div>
+                                    </div>
+                                    <div class="movie-info">Niệm Vô Song</div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselChina"
+                        data-bs-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselChina"
+                        data-bs-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="section">
+                <h3 class="section-title text-light">Phim Anime mới</h3>
+                <div id="carouselAnime" class="carousel slide carousel-anime" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">   <img src="/images/anime1.webp" alt="Dragon Ball DAIMA">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 20</div>
+                                        <div class="tag tag-tm">TM. 16</div>
+                                    </div>
+                                    <div class="movie-info">Dragon Ball DAIMA</div></a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html"></a> <img src="/images/anime2.webp"
+                                        alt="Shangri-La Frontier: Thợ Săn Game Rác Thách Thức Game Cấp ">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 25</div>
+                                    </div>
+                                    <div class="movie-info">Shangri-La Frontier: Thợ Săn Game R...</div></a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">  <img src="/images/anime3.webp" alt="Soda Chanh Mật Ong">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 12</div>
+                                    </div>
+                                    <div class="movie-info">Soda Chanh Mật Ong</div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-start gap-3">
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html"><img src="/images/anime4.webp" alt="Trở Thành Giáo Viên Tại Trường...">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 24</div>
+                                    </div>
+                                    <div class="movie-info">Trở Thành Giáo Viên Tại Trường...</div> </a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">  <img src="/images/anime5.webp" alt="Hồi Sinh Thế Giới">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 12</div>
+                                    </div>
+                                    <div class="movie-info">Hồi Sinh Thế Giới</div></a>
+                                </div>
+                                <div class="movie-card">
+                                    <a href="/html/chieuphimbo3.html">  <img src="/images/anime6.webp" alt="Kết Hôn Với Người Mà Tôi Ghét...">
+                                    <div class="tags">
+                                        <div class="tag tag-pd">PĐ. 12</div>
+                                    </div>
+                                    <div class="movie-info">Kết Hôn Với Người Mà Tôi Ghét...</div></a>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselAnime"
+                        data-bs-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselAnime"
+                        data-bs-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4 list" style="font-family: 'Esmonwe', sans-serif;">
+            <div class="row">
+                <div class="col-md-4 section-box"
+                    style="border-top-left-radius: 20px; border-bottom-left-radius:20px ;">
+                    <h5><i class="fas fa-fire" style="padding-top: 20px;"></i> SÔI NỔI NHẤT</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item rank-icon"><span class="rank-num">1.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/sn1.webp"> Khi Cuộc Đời Cho Bạn Quả Quýt
+                        </li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">2.</span> <i
+                                class="fas fa-arrow-down"></i> <img src="/images/sn2.webp"> Khi Chim Ngạn Trở Về</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">3.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/sn3.webp"> Đốt Cháy Tội Ác</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">4.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/sn4.webp"> Reacher</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">5.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/sn5.webp"> Daredevil: Tái Xuất</li>
+                    </ul>
+                    <button class="view-more" data-target="popup1">Xem thêm</button>
+                    <div class="overlay" id="overlay1"></div>
+                    <div class="popup" id="popup1">
+                        <button class="close-btn" data-target="popup1"><i class="fas fa-times"></i></button>
+                        <p>
+                        <h5 style="font-size: 30px;"><i class="fas fa-fire"></i> SÔI NỔI NHẤT</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item rank-icon"><span class="rank-num">1.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn1.webp"> Khi Cuộc Đời Cho Bạn Quả
+                                Quýt</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">2.</span> <i
+                                    class="fas fa-arrow-down"></i> <img src="/images/sn2.webp"> Khi Chim Ngạn Trở Về
+                            </li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">3.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn3.webp"> Đốt Cháy Tội Ác</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">4.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn4.webp"> Reacher</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">5.</span> <i
+                                    class="fas fa-arrow-down"></i> <img src="/images/sn5.webp"> Daredevil: Tái Xuất</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">6.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn6.webp"> Bảo Hiểm Ly Hôn</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">7.</span> <i
+                                    class="fas fa-arrow-down"></i> <img src="/images/sn7.webp"> Berlin ER: Phòng Cấp Cứu
+                                Ở Berlin</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">8.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn8.webp"> Khó Dỗ Dành</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">9.</span> <i
+                                    class="fas fa-arrow-down"></i> <img src="/images/sn9.webp"> Niệm Vô Song</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">10.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/sn10.webp"> Trái Tim Bị Chôn Vùi</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 section-box">
+                    <h5><i class="fas fa-heart" style="padding-top: 20px;"></i> YÊU THÍCH NHẤT</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item rank-icon"><span class="rank-num">1.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/yt1.webp"> Khi Cuộc Đời Cho Bạn Quả Quýt
+                        </li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">2.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/yt2.webp"> Shin Movie32: Cậu Bé Bút
+                            Chì...</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">3.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/yt3.webp"> Khó Dỗ Dành</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">4.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/yt4.webp"> Niệm Vô Song</li>
+                        <li class="list-group-item rank-icon"><span class="rank-num">5.</span> <i
+                                class="fas fa-arrow-up"></i> <img src="/images/yt5.webp"> Na Tra 2: Ma Đồng Náo Hải</li>
+                    </ul>
+                    <button class="view-more" data-target="popup2">Xem thêm</button>
+                    <div class="overlay" id="overlay2"></div>
+                    <div class="popup" id="popup2">
+                        <button class="close-btn" data-target="popup2"><i class="fas fa-times"></i></button>
+                        <p>
+                        <h5><i class="fas fa-heart" style="padding-top: 20px;"></i> YÊU THÍCH NHẤT</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item rank-icon"><span class="rank-num">1.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt1.webp"> Khi Cuộc Đời Cho Bạn Quả
+                                Quýt</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">2.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt2.webp"> Shin Movie32: Cậu Bé Bút
+                                Chì...</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">3.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt3.webp"> Khó Dỗ Dành</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">4.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt4.webp"> Niệm Vô Song</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">5.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt5.webp"> Na Tra 2: Ma Đồng Náo Hải
+                            </li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">6.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt6.webp"> Lưỡi Dao Hiểm Hóc</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">7.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt7.webp"> Đào, Phở Và Piano</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">8.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt8.webp"> 404 Chạy Ngay Đi</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">9.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt9.webp"> Bậc Thầy Đàm Phán</li>
+                            <li class="list-group-item rank-icon"><span class="rank-num">10.</span> <i
+                                    class="fas fa-arrow-up"></i> <img src="/images/yt10.webp"> Daredevil: Tái Xuất</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 section-box"
+                    style="border-top-right-radius: 20px; border-bottom-right-radius:20px ;">
+                    <h5><i class="fas fa-comments" style="padding-top: 20px;"></i> BÌNH LUẬN MỚI</h5>
+                    <div class="comment-box">
+                        <img src="/images/tron1.webp" class="avatar" alt="User Avatar">
+                        <div class="comment-content">
+                            <p><strong>huynhkhaikhoa</strong> Nữ phụ đẹp hơn nữ 9 vậy</p>
+                            <small>▶ Trò Chơi Tình Ái</small>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <img src="/images/tron2.webp" class="avatar" alt="User Avatar">
+                        <div class="comment-content">
+                            <p><strong>nguyentanphuoc</strong> ê trang phục của nữ 9 tập này hơi kì...</p>
+                            <small>▶ Yêu Em</small>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <img src="/images/tron3.webp" class="avatar" alt="User Avatar">
+                        <div class="comment-content">
+                            <p><strong>nguyencaothienphu</strong> Phim hãi ghê</p>
+                            <small>▶ The Monkey: Tiếng Vọng Kinh Hoàng</small>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <img src="/images/tron4.webp" class="avatar" alt="User Avatar">
+                        <div class="comment-content">
+                            <p><strong>nguyenminhcang</strong> phim hay quáiiii</p>
+                            <small>▶ Thẩm Phán Từ Địa Ngục</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="container mt-4">
+            <h2 class="mb-3 text-white">Top 10 trong ngày</h2>
+            <div class="top-10-container-unique">
+                <div class="slide-top10">
+                    <div class="movie-card-unique movie-card-right-unique">
+                        <img src="/images/top1.webp" alt="Khi Cuộc Đời Cho Bạn Quả Quýt">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html" style="color: white;">  <p class="ranking-unique">1</p>
+                            <div class="TM-12">TM.16</div>
+                            <div class="PĐ-9">PĐ.16</div>
+                            <h6 class="title-unique">Khi Cuộc Đời Cho Bạn Quả Quýt</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 16</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-left-unique">
+                        <img src="/images/top2.webp" alt="Khó Dỗ Dành">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html" style="color: white;"><p class="ranking-unique">2</p>
+                            <div class="TM-12">TM.32</div>
+                            <div class="PĐ-9">PĐ.32</div>
+                            <h6 class="title-unique">Khó Dỗ Dành</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 32</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-right-unique">
+                        <img src="/images/top3.webp" alt="Khi Chim Ngạn Trở Về">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;"> <p class="ranking-unique">3</p>
+                            <div class="TM-12">TM.30</div>
+                            <div class="PĐ-9">PĐ.32</div>
+                            <h6 class="title-unique">Khi Chim Ngạn Trở Về</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 30</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-left-unique">
+                        <img src="/images/top4.webp" alt="Kẻ Thù Dấu Yêu">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;">  <p class="ranking-unique">4</p>
+                            <div class="TM-12">TM.12</div>
+                            <div class="PĐ-9">PĐ.12</div>
+                            <h6 class="title-unique">Kẻ Thù Dấu Yêu</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 12</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-right-unique">
+                        <img src="/images/top5.webp" alt="Tự Cẩm">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;"> <p class="ranking-unique">5</p>
+                            <div class="TM-12">TM.40</div>
+                            <div class="PĐ-9">PĐ.40</div>
+                            <h6 class="title-unique">Tự Cẩm</h6>
+                            <p class="episode-unique">T13 - Phần 1 - Tập 40</p></a>  
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-top10">
+                    <div class="movie-card-unique movie-card-left-unique">
+                        <img src="/images/top6.webp" alt="Bảo Hiểm Ly Hôn">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html" style="color: white;"> <p class="ranking-unique">6</p>
+                            <div class="PĐ-9">PĐ.2</div>
+                            <h6 class="title-unique">Bảo Hiểm Ly Hôn</h6>
+                            <p class="episode-unique">T13 - Phần 1 - Tập 2</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-right-unique">
+                        <img src="/images/top7.webp" alt="Lưỡi Dao Hiểm Hóc">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;">  <p class="ranking-unique">7</p>
+                            <div class="TM-12">TM.4</div>
+                            <div class="PĐ-9">PĐ.6</div>
+                            <h6 class="title-unique">Lưỡi Dao Hiểm Hóc</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 6</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-left-unique">
+                        <img src="/images/top8.webp" alt="Suỵt, Quốc Vương Đang Ngủ Đông">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;"> <p class="ranking-unique">8</p>
+                            <div class="TM-12">TM.23</div>
+                            <div class="PĐ-9">PĐ.23</div>
+                            <h6 class="title-unique">Suỵt, Quốc Vương Đang Ngủ Đông</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 23</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-right-unique">
+                        <img src="/images/top9.webp" alt="Trung Tâm Chăm Sóc Chấn Thương">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;"> <p class="ranking-unique">9</p>
+                            <div class="TM-12">TM.8</div>
+                            <div class="PĐ-9">PĐ.8</div>
+                            <h6 class="title-unique">Trung Tâm Chăm Sóc Chấn Thương</h6>
+                            <p class="episode-unique">T16 - Phần 1 - Tập 8</p></a>  
+                        </div>
+                    </div>
+                    <div class="movie-card-unique movie-card-left-unique">
+                        <img src="/images/top10.webp" alt="Niệm Vô Song">
+                        <div class="movie-info-unique">
+                            <a href="/html/chieuphimbo3.html"style="color: white;"  >  <p class="ranking-unique">10</p>
+                            <div class="TM-12">TM.16</div>
+                            <div class="PĐ-9">PĐ.18</div>
+                            <h6 class="title-unique">Niệm Vô Song</h6>
+                            <p class="episode-unique">T13 - Phần 1 - Tập 18</p></a>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-btn prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-btn next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <footer class="footer"></footer>
+        <div class="footer-top">
+            <span class="sovereignty" data-key="territorial-sovereignty">⭐ Hoàng Sa & Trường Sa là của Việt Nam!</span>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/logo.webp" alt="APK Movie Logo">
+                <h2>APK Movie</h2>
+                <p data-key="phim-hay-apkmovie">Phim hay APK Movie</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://web.telegram.org/" target="_blank"><img src="/images/tele.webp" alt="Telegram"></a>
+                <a href="https://x.com/" target="_blank"><img src="/images/x.webp" alt="X"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="/images/fb.webp" alt="Facebook"></a>
+                <a href="https://tiktok.com/" target="_blank"><img src="/images/tiktok.webp" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="/images/ytb.webp" alt="YouTube"></a>
+                <a href="https://www.threads.net/" target="_blank"><img src="/images/threads.webp" alt="Threads"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/images/ins.webp" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="/html/chinhsachbaomat.html" data-key="chinhsachbaomat">Chính sách bảo mật</a>
+            <a href="/html/dieukhoan.html" data-key="dieukhoan">Điều khoản sử dụng</a>
+            <a href="/html/gioithieu.html" data-key="gioithieu">Giới thiệu</a>
+            <a href="/html/lienhe.html" data-key="lienhe">Liên hệ</a>
+        </div>
+        <div class="footer-categories">
+            <a href="#">Dongphim</a>
+            <a href="#">Ghienphim</a>
+            <a href="#">Motphim</a>
+            <a href="#">Subnhanh</a>
+        </div>
+        <div class="footer-description" data-key="quangcao">
+            APK Movie - Phim hay APK Movie - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng
+            tiếng
+            full
+            HD.
+            Kho phim mới không lỡ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung
+            Quốc,
+            Thái Lan,
+            Nhật Bản, Âu Mỹ... đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!
+        </div>
+        <div class="footer-copyright">
+            © 2025 APK Movie
+        </div>
+        </footer>
+        <div class="back-to-top" onclick="scrollToTop()">▲</div>
+        <script src="/js/trangchu.js"></script>
+        <script src="/js/script_dangky.js"></script>
+</body>
+
+</html>

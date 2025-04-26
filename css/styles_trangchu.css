@@ -1,0 +1,2908 @@
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+.navbar-brand img {
+  height: 35px;
+  margin-right: 10px;
+}
+.search-bar {
+  flex-grow: 1;
+  max-width: 400px;
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
+  flex-grow: 1;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+}
+
+@media (max-width: 992px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #1b1b1b;
+    text-align: center;
+    z-index: 1000;
+    padding: 10px 0;
+    border-radius: 5px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 10px;
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 100%;
+}
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.language-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.language-button .arrow-icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.language-selector::-webkit-scrollbar,
+.language-button::-webkit-scrollbar,
+.dropdown-menu::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.country-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.country-dropdown .dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.country-dropdown .arrow-icon {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.country-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 150px;
+  top: 100%;
+  left: 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.country-dropdown .dropdown-item {
+  padding: 10px;
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+.country-dropdown .dropdown-item:hover {
+  background-color: #444;
+}
+
+.country-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.country-dropdown .dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  width: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: #333;
+}
+
+.show-dropdown .dropdown-menu {
+  display: block;
+}
+
+.show-dropdown .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.btn-outline-light {
+  background-color: #e0e0e0;
+  color: black;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #28a9ff;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.btn-member {
+  background: #2a2a2a;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.show {
+  display: flex !important;
+}
+.label {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.movie-container {
+  position: relative;
+}
+
+.menu a,
+.dropdown-item,
+.btn,
+.language-button,
+.movie-item,
+.navbar-brand {
+  transition: all 0.3s ease-in-out;
+}
+
+.menu a:hover {
+  color: #f4b400;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+  color: #f4b400;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-light {
+  background: linear-gradient(45deg, #f4b400, #ffcc00);
+  color: black;
+}
+
+.btn-outline-light:hover {
+  background: linear-gradient(45deg, #ff9900, #ffcc33);
+  color: white;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #28a9ff, #007bff);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(2px);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.btn:hover {
+  animation: shake 0.3s ease-in-out;
+}
+
+.language-button:hover {
+  background-color: #444;
+  color: #f4b400;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand:hover {
+  color: #f4b400;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background-color: #28a9ff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.page-btn:hover {
+  background-color: #1b7bcc;
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:active {
+  transform: scale(0.9);
+}
+
+.footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-top {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sovereignty {
+  background-color: red;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 50px;
+}
+
+.footer-logo h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.footer-logo p {
+  margin: 0;
+  color: gray;
+}
+
+.footer-social {
+  margin-top: 10px;
+}
+
+.footer-social a {
+  margin: 0 5px;
+}
+
+.footer-social img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-links,
+.footer-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.footer-links a,
+.footer-categories a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.footer-links a:hover,
+.footer-categories a:hover {
+  color: #ffcc00;
+}
+
+.footer-description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-copyright {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .right-section {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .movie-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-item img {
+    height: auto;
+  }
+  .btn {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+.navbar-brand img {
+  height: 35px;
+  margin-right: 10px;
+}
+.search-bar {
+  flex-grow: 1;
+  max-width: 400px;
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
+  flex-grow: 1;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+}
+
+@media (max-width: 992px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #1b1b1b;
+    text-align: center;
+    z-index: 1000;
+    padding: 10px 0;
+    border-radius: 5px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 10px;
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 100%;
+}
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.language-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.language-button .arrow-icon {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.language-selector::-webkit-scrollbar,
+.language-button::-webkit-scrollbar,
+.dropdown-menu::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.country-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.country-dropdown .dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.country-dropdown .arrow-icon {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.country-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 150px;
+  top: 100%;
+  left: 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.country-dropdown .dropdown-item {
+  padding: 10px;
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+.country-dropdown .dropdown-item:hover {
+  background-color: #444;
+}
+
+.country-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.country-dropdown .dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  width: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: #333;
+}
+
+.show-dropdown .dropdown-menu {
+  display: block;
+}
+
+.show-dropdown .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.btn-outline-light {
+  background-color: #e0e0e0;
+  color: black;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #28a9ff;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.btn-member {
+  background: #2a2a2a;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.show {
+  display: flex !important;
+}
+.label {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.movie-container {
+  position: relative;
+}
+
+.menu a,
+.dropdown-item,
+.btn,
+.language-button,
+.movie-item,
+.navbar-brand {
+  transition: all 0.3s ease-in-out;
+}
+
+.menu a:hover {
+  color: #f4b400;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+  color: #f4b400;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-light {
+  background: linear-gradient(45deg, #f4b400, #ffcc00);
+  color: black;
+}
+
+.btn-outline-light:hover {
+  background: linear-gradient(45deg, #ff9900, #ffcc33);
+  color: white;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #28a9ff, #007bff);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(2px);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.btn:hover {
+  animation: shake 0.3s ease-in-out;
+}
+
+.language-button:hover {
+  background-color: #444;
+  color: #f4b400;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand:hover {
+  color: #f4b400;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background-color: #28a9ff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.page-btn:hover {
+  background-color: #1b7bcc;
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:active {
+  transform: scale(0.9);
+}
+
+.footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-top {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sovereignty {
+  background-color: red;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 50px;
+}
+
+.footer-logo h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.footer-logo p {
+  margin: 0;
+  color: gray;
+}
+
+.footer-social {
+  margin-top: 10px;
+}
+
+.footer-social a {
+  margin: 0 5px;
+}
+
+.footer-social img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-links,
+.footer-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.footer-links a,
+.footer-categories a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.footer-links a:hover,
+.footer-categories a:hover {
+  color: #ffcc00;
+}
+
+.footer-description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-copyright {
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .right-section {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .movie-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-item img {
+    height: auto;
+  }
+  .btn {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.movie-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.movie-rating {
+  color: #ffd700;
+}
+
+
+
+.movie-card:hover .play-btn {
+  opacity: 1;
+}
+
+
+.movie-container2 {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.movie-card2 {
+  width: calc(100% / 7 - 20px);
+  background: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+}
+.movie-card img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}
+.movie-info {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Featured Categories */
+.category-container {
+  display: flex;
+  flex-wrap: wrap; /* Đảm bảo các thẻ xuống hàng đúng */
+  justify-content: space-between; /* Căn đều các ô */
+  max-width: 100%; /* Đảm bảo không bị tràn */
+  margin: 0 auto;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 20px 0; /* Khoảng cách với viền ngoài */
+}
+
+/* Thẻ danh mục */
+.category-card {
+  width: 200px; /* Giữ kích thước đồng nhất */
+  height: 120px; /* Đảm bảo tỷ lệ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px; /* Bo góc */
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Gradient màu nền từng thẻ */
+.marvel { background-image: url(/images/chudemarvel.webp); }
+.witch {background-image: url(/images/chudephuthuy.webp); }
+.sitcom {background-image: url(/images/chudesitcom.webp); }
+.dub { background-image: url(/images/chudelongtieng.webp); }
+.time {background-image: url(/images/chudexuyenkhong.webp);}
+.movies90 {background-image: url(/images/chude9x.webp)}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Nút "+3 chủ đề" */
+.more-topics {
+  width: 200px;
+  height: 60px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  background: linear-gradient(to top, #333, #222);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.more-topics:hover {
+  transform: scale(1.05);
+}
+.container h4 {
+  font-size: 20px; /* Đảm bảo kích thước phù hợp */
+  font-weight: bold;
+  color: white;
+  margin-bottom: 16px; /* Giữ khoảng cách hợp lý */
+  text-align: left; /* Căn lề trái */
+}
+
+
+
+
+
+.noidung {
+  height: 50%; /* Chiếm 50% chiều cao màn hình */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5); /* Nền mờ cho nội dung */
+    padding: 200px;
+    position: relative; /* Để có thể đặt hình nền */
+    z-index: 1; /* Đảm bảo nội dung nằm trên hình nền */
+}
+
+.dynamic-background {
+  height: 50%; /* Phần còn lại của chiều cao màn hình */
+  animation: backgroundAnimation 20s infinite alternate;
+  background-size: cover;
+  position: absolute; /* Để có thể đặt hình nền */
+   /* Đặt phần hình nền bắt đầu từ 50% chiều cao */
+  left: 0;
+  right: 0;
+  z-index: 0; /* Đảm bảo hình nền nằm dưới nội dung */
+}
+
+@keyframes backgroundAnimation {
+  0% {
+      background-image: url('Lmao2.webp'); /* Đường dẫn đến hình ảnh 1 */
+  }
+  50% {
+      background-image: url('Lmao3.webp'); /* Đường dẫn đến hình ảnh 2 */
+  }
+  100% {
+      background-image: url('Lmao6.webp'); /* Đường dẫn đến hình ảnh 3 */
+  }
+}
+
+.list-group-item {
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.list-group-item img {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.list-group-item:hover {
+    background-color: #292929;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.view-more:hover {
+  color: #f4c542; /* Hiệu ứng hover */
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  background-color: #292929;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-content {
+  color: white;
+}
+
+h5 {
+  color: #f4c542;
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+
+
+
+.ranking {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: gold;
+}
+.movie-containerxh {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 20px;
+  justify-content: center;
+}
+.moviexh {
+  position: relative;
+  flex: 0 0 200px;
+  transform: rotate(var(--tilt-angle));
+  transition: transform 0.3s ease-in-out;
+}
+
+.sub-tags {
+  display: flex;
+  margin-top: 8px;
+  flex-wrap: wrap; /* Để các tag không bị tràn khi thu nhỏ */
+}
+
+.sub-tag {
+  background: rgba(0, 0, 0, 0.8); /* Nền đen mặc định */
+  color: white;
+  padding: 4px 10px; /* Giảm kích thước padding */
+  border-radius: 6px; /* Bo góc nhỏ hơn */
+  font-size: 13px; /* Giảm kích thước chữ */
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  background: rgba(0, 0, 0, 0.364); /* Màu nền ban đầu nhẹ */
+  color: #fff; /* Màu chữ trắng */
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Khi hover vào thẻ */
+.sub-tag:hover {
+  background: rgba(255, 255, 255, 0.3); /* Màu nền khi hover nhẹ */
+  color: #ffcc00; /* Màu chữ sáng hơn */
+  transform: scale(1.1); /* Hiệu ứng phóng to nhẹ */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6); /* Viền sáng nhẹ */
+}
+
+
+
+.sub-tag:hover::after {
+  opacity: 1;
+}
+
+/* Thẻ tag */
+.tag {
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 2px 4px 12px rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
+}
+
+/* Màu sắc cho từng mục với hiệu ứng gradient */
+.imdb { 
+  background: linear-gradient(135deg, #FFD700, #FF8C00); /* Vàng rực rỡ, có ánh cam */
+  color: black; 
+}
+
+.age { 
+  background: linear-gradient(135deg, #FFFFFF, #A0A0A0); /* Trắng-xám nhẹ nhàng nhưng vẫn tinh tế */
+  color: black; 
+}
+
+.year { 
+  background: linear-gradient(135deg, #808080, #222222); /* Xám đậm và sâu hơn */
+}
+
+.part { 
+  background: linear-gradient(135deg, #00CFFF, #0033FF); /* Xanh dương neon kết hợp xanh biển mạnh mẽ */
+}
+
+.episode { 
+  background: linear-gradient(135deg, #FF007F, #8000FF); /* Hồng neon pha tím huyền bí */
+}
+
+/* Thêm hiệu ứng phát sáng khi hover */
+.tag:hover {
+  filter: brightness(1.3); /* Tăng sáng */
+  transform: scale(1.08); /* Phóng to nhẹ */
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3), 
+              0px 0px 10px rgba(255, 255, 255, 0.5); /* Hiệu ứng ánh sáng ảo */
+}
+
+/* Hiệu ứng đèn neon mềm mại */
+@keyframes neonGlow {
+  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); }
+  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+}
+
+.tag {
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+
+/* Tooltip tuỳ chỉnh */
+.tag:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.tag:hover::after {
+  opacity: 1;
+}
+
+.favorite-btn, .info-btn {
+  background: rgba(255, 255, 255, 0.1);
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px; /* Đảm bảo không bị thu nhỏ hoặc mở rộng */
+  max-width: 80px;
+}
+
+.favorite-btn i, .info-btn i {
+  color: white;
+  font-size: 50px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-btn:hover i {
+  color: #ff00a2;
+  transform: scale(1.2); /* Chỉ icon phóng to, không ảnh hưởng đến viền */
+}
+.favorite-btn.active i {
+  color: #ff00a2;
+}
+
+.info-btn.active i {
+  color: greenyellow;
+}
+
+.info-btn:hover i {
+  color: greenyellow;
+  transform: scale(1.2);
+}
+.button-group {
+  display: flex;
+  align-items: center;  /* Căn giữa các nút theo chiều dọc */
+  gap: 20px;  /* Điều chỉnh khoảng cách giữa nút Play và icon-group */
+}
+
+.play-btn {
+  width: 80px;  /* Tăng kích thước */
+  height: 80px;
+  margin-left: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFD700, #F0C420);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Tăng bóng mờ */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Khi hover vào nút Play */
+.play-btn:hover {
+  transform: scale(1.1); /* Phóng to nhẹ */
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.7); /* Tăng hiệu ứng bóng */
+  background: radial-gradient(circle, #FFC107, #E0A800); /* Đổi màu nền */
+}
+
+/* Khi được nhấn vào */
+.play-btn:active,
+.play-btn.selected {
+  background: radial-gradient(circle, #FFA000, #FF6F00); /* Đổi màu khi được chọn */
+  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.8);
+  transform: scale(1.05);
+}
+
+/* Điều chỉnh icon trong nút */
+.play-btn i {
+  font-size: 35px; /* Tăng kích thước icon */
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Khi hover vào nút, icon đổi màu */
+.play-btn:hover i {
+  color: white;
+}
+
+
+/* Điều chỉnh icon-group */
+.icon-group {
+  display: flex;
+  align-items: center;
+  border-radius: 200px;
+  overflow: hidden;
+  margin-left: 30px;
+  height: 80px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.5s ease-in-out;
+}
+
+.icon-group button {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.icon-group button i {
+  color: white;
+  font-size: 35px;
+}
+.icon-group:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7); /* Tăng độ dày bóng */
+  transform: scale(1.1);
+}
+
+
+/* Chia cách 2 nút trong icon-group */
+.icon-group button:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  height: 100px;
+}
+.banner {
+  position: relative;
+  height: 700px;
+  background-repeat: no-repeat; /* Không lặp ảnh */
+  background-position: center; /* Căn giữa ảnh */
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Căn nội dung trái, hình ảnh phải */
+  text-align: left;
+  border-radius: 10px;
+  padding: 0 60px; /* Thêm khoảng cách hai bên */
+  overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
+  
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.600);
+  border-radius: 10px;
+  z-index: 1; /* Giữ background nằm dưới */
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2; /* Nội dung trên background */
+  max-width: 50%; /* Giới hạn chiều rộng nội dung */
+}
+
+
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.movie-list {
+  position: relative;
+  z-index: 2; /* Đặt hình ảnh lên trên banner */
+  margin-top: 30%; /* Để hình ảnh lệch xuống dưới */
+  display: flex;
+  gap: 10px; /* Tăng khoảng cách giữa các ảnh */
+}
+
+.movie-list img {
+  width: 120px;
+  height: 180px;
+  border-radius: 8px;
+  transition: transform 0.3s, border 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+/* Khi hover vào ảnh */
+.movie-list img:hover {
+  transform: scale(1.1);
+  border: 3px solid rgba(255, 255, 255, 0.8); /* Viền mỏng hơn */
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8); /* Tăng bóng mờ */
+}
+
+/* Khi ảnh được chọn (active) */
+.movie-list img.active {
+  transform: scale(1.1);
+  border: 3px solid rgba(255, 255, 255, 0.9); /* Viền mỏng hơn */
+  box-shadow: 0px 0px 25px rgba(255, 255, 255, 1); /* Bóng mờ mạnh hơn */
+}
+
+.container-xxl {
+  width: 100%;
+  max-width: none;
+}
+.thumbnail {
+  opacity: 0.5; /* Mặc định làm mờ tất cả ảnh */
+  transition: opacity 0.3s ease-in-out; /* Hiệu ứng mượt khi thay đổi */
+}
+
+.thumbnail.active {
+  opacity: 1; /* Ảnh được chọn sẽ rõ ràng */
+}
+
+@keyframes movingBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes flashText {
+  0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
+  50% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 76, 48, 0.8); }
+  100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); }
+}
+@keyframes floatBubble {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.8) translateX(0); /* Bong bóng bắt đầu từ dưới với kích thước nhỏ */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-500px) scale(1.3) translateX(20px); /* Bong bóng bay lên vô tận, di chuyển nhẹ sang trái và phải */
+  }
+}
+
+
+.title-container {
+
+  position: relative;
+  display: inline-block;
+}
+
+.title-h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ đã được thay đổi */
+  font-size: 60px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: -85px;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  padding: 20px 40px;
+  border-radius: 15px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(45deg, rgba(255, 65, 108, 0.3), rgba(255, 75, 43, 0.3), rgba(30, 60, 114, 0.3), rgba(42, 82, 152, 0.3)); /* Gradient mờ */
+  background-size: 300% 300%;
+  animation: movingBackground 6s infinite linear;
+  transition: all 0.3s ease-in-out;
+  user-select: none; /* Ngừng chọn vùng văn bản */
+  padding: 30px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(3px); /* Thêm hiệu ứng mờ cho nền phía sau */
+  transition: background 0.3s ease, backdrop-filter 0.3s ease; /* Thêm hiệu ứng chuyển động cho nền */
+}
+
+/* Khi hover */
+.title-h1:hover {
+  background: linear-gradient(45deg, rgba(255, 65, 108, 0.9), rgba(255, 75, 43, 0.9), rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)); /* Tăng độ sáng nền khi hover */
+  backdrop-filter: blur(5px); /* Giảm độ mờ nền khi hover */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 1);
+}
+
+/* Khi nhấn vào */
+.title-h1:active {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+/* Bong bóng */
+.bubble {
+  position: absolute;
+  width: 30px;  /* Kích thước bong bóng lớn hơn */
+  height: 30px; /* Kích thước bong bóng lớn hơn */
+  background: rgba(255, 255, 255, 0.7); /* Màu sắc bong bóng nhẹ */
+  border-radius: 50%;  /* Hình dạng bong bóng tròn */
+  pointer-events: none;  /* Không cho phép tương tác với bong bóng */
+  animation: floatBubble 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;  /* Hiệu ứng di chuyển lên liên tục */
+  
+  /* Hiệu ứng bóng mờ và sáng tạo ra độ bóng cho bong bóng */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.5);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3)); /* Tạo hiệu ứng bóng */
+}
+
+
+#movie-description {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sử dụng font chữ serif để tạo cảm giác trang trọng và dễ đọc */
+  font-size: 16px; /* Tăng kích thước chữ để dễ đọc hơn */
+  line-height: 1.8; /* Tăng khoảng cách giữa các dòng chữ để dễ đọc hơn */
+  color: #f0f0f0; /* Màu chữ sáng */
+  background: rgba(0, 0, 0, 0.5); /* Nền tối nhẹ để làm nổi bật chữ */
+  padding: 20px; /* Thêm khoảng cách xung quanh đoạn văn */
+  border-radius: 8px; /* Bo tròn các góc của khung nền */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Bóng nhẹ giúp tạo chiều sâu */
+  max-width: 800px; /* Giới hạn chiều rộng tối đa của đoạn văn */
+  margin: 20px auto; /* Canh giữa và tạo khoảng cách bên ngoài */
+  margin-bottom: -5px;
+  text-align: justify; /* Căn đều các dòng trong đoạn văn */
+  transition: all 1.0s ease-in-out;
+}
+/* Hiệu ứng cho tiêu đề phim */
+/* Hiệu ứng cho mô tả phim */
+#movie-description {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#movie-description.moving {
+  transform: translateY(10px); /* Di chuyển mô tả xuống */
+  opacity: 0; /* Mờ mô tả khi chuyển */
+}
+
+/* Hiệu ứng cho các thẻ thông tin phim */
+#movie-year, #movie-imdb, #movie-age, #movie-part, #movie-episode {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#movie-year.moving, #movie-imdb.moving, #movie-age.moving, #movie-part.moving, #movie-episode.moving {
+  transform: translateX(10px); /* Di chuyển các thẻ thông tin sang phải */
+  opacity: 0; /* Mờ các thẻ thông tin khi chuyển */
+}
+
+/* Hiệu ứng cho các thể loại phim */
+.sub-tags .sub-tag {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sub-tags .sub-tag.moving {
+  transform: translateX(10px); /* Di chuyển các thẻ thể loại khi thay đổi */
+  opacity: 0; /* Mờ các thẻ thể loại khi chuyển */
+}
+
+/* Hiệu ứng cho banner (background) */
+#banner {
+  transition: opacity 0.5s ease-in-out; /* Giảm thời gian mờ */
+  opacity: 1; /* Banner luôn hiển thị */
+}
+
+#banner.moving {
+  opacity: 0; /* Mờ background khi chuyển */
+}
+
+/* Hiệu ứng di chuyển cho các phần tử */
+.moving {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(50px); /* Di chuyển nhẹ lên trên */
+}
+
+.moving-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cập nhật hiệu ứng cho các nút */
+/* Hiệu ứng mờ cho các nút */
+button.hide {
+  opacity: 0;
+  pointer-events: none;  /* Ngăn chặn việc nhấn vào nút khi ẩn */
+  transition: opacity 0.5s ease, pointer-events 0s ease;
+}
+
+/* Hiệu ứng mờ cho thư viện ảnh */
+.movie-list img {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.movie-list img.hide {
+  opacity: 0;  /* Ẩn các ảnh */
+}
+
+/* Khi các phần tử đang được ẩn, sẽ thêm lớp "hide" vào các phần tử */
+.hide {
+  display: none; /* Đảm bảo phần tử sẽ không chiếm không gian trên trang */
+}
+
+/* Hiệu ứng cho các phần tử hiển thị lại khi banner đã hoàn thành */
+#banner.moving-complete ~ .button-group {
+  opacity: 1;
+  pointer-events: auto;  /* Cho phép nhấn lại các nút */
+  transition: opacity 0.5s ease 0.5s;  /* Sau khi banner đã hoàn tất */
+}
+.content-elements {
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Mới bắt đầu xuất hiện khi banner hoàn thành */
+}
+
+.carousel-han .movie-card,
+.carousel-china .movie-card,
+.carousel-anime .movie-card {
+  width: 32%;  /* Chiếm khoảng 1/3 của container */
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* Đảm bảo thông tin phim nằm dưới cùng */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 8px;
+  cursor: pointer;  /* Thêm con trỏ chỉ khi hover */
+  opacity: 0; /* Ẩn tất cả các phần tử */
+  transition: opacity 0.3s ease; /* Thêm hiệu ứng mượt mà */
+}
+
+/* Định dạng hình ảnh */
+.carousel-han .movie-card img,
+.carousel-china .movie-card img,
+.carousel-anime .movie-card img {
+  width: 100%;
+  height: 220px; /* Giới hạn chiều cao của hình ảnh để đồng nhất */
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+/* Các thẻ tag PD và TM nằm chung trong một chỗ trên hình ảnh */
+.carousel-han .tags,
+.carousel-china .tags,
+.carousel-anime .tags {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+}
+
+/* Định dạng cho các tag */
+.carousel-han .tag,
+.carousel-china .tag,
+.carousel-anime .tag {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Màu sắc cho các tag */
+.carousel-han .tag-pd,
+.carousel-china .tag-pd,
+.carousel-anime .tag-pd {
+  background-color: #FF6F61;  /* Màu dành cho PD */
+}
+
+.carousel-han .tag-tm,
+.carousel-china .tag-tm,
+.carousel-anime .tag-tm {
+  background-color: #6B8E23;  /* Màu dành cho TM */
+}
+
+/* Phần thông tin phim (Tên phim) nằm dưới cùng */
+.carousel-han .movie-info,
+.carousel-china .movie-info,
+.carousel-anime .movie-info {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+  padding: 12px;
+  background: transparent;  /* Loại bỏ nền xám */
+  border-radius: 0 0 12px 12px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  transition: color 0.3s, transform 0.3s; /* Thêm hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng hover cho tên phim khi hover vào .movie-card */
+.carousel-han .movie-card:hover .movie-info,
+.carousel-china .movie-card:hover .movie-info,
+.carousel-anime .movie-card:hover .movie-info {
+  color: #99ff24ad;  /* Đổi màu khi hover */
+  transform: scale(1.1);  /* Phóng to khi hover */
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.692);  /* Thêm bóng mờ xung quanh chữ */
+}
+
+/* Hiệu ứng hover cho hình ảnh và tên phim */
+.carousel-han .movie-card:hover img,
+.carousel-china .movie-card:hover img,
+.carousel-anime .movie-card:hover img {
+  transform: scale(1.1);  /* Phóng to hình ảnh khi hover */
+}
+
+/* Chỉ hiển thị slide hiện tại */
+.carousel-item.active .movie-card {
+  opacity: 1; /* Hiển thị slide hiện tại */
+}
+
+/* Nút mũi tên (Prev/Next) */
+.carousel-han .carousel-control-prev,
+.carousel-china .carousel-control-prev,
+.carousel-anime .carousel-control-prev,
+.carousel-han .carousel-control-next,
+.carousel-china .carousel-control-next,
+.carousel-anime .carousel-control-next {
+  position: absolute;
+  top: 41%;
+  margin-right: -30px;
+  z-index: 10;
+  transform: translateY(-50%);
+  background-color: rgb(255, 255, 255);  /* Nền trắng cho nút */
+  border-radius: 50%;
+  padding: 15px;  /* Tăng kích thước padding để nút lớn hơn */
+  width: 60px;  /* Kích thước nút lớn hơn */
+  height: 60px; /* Kích thước nút lớn hơn */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Thêm bóng mờ */
+  transition: box-shadow 0.3s, transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+/* Biểu tượng mũi tên Font Awesome */
+.carousel-han .carousel-control-prev i,
+.carousel-han .carousel-control-next i,
+.carousel-china .carousel-control-prev i,
+.carousel-china .carousel-control-next i,
+.carousel-anime .carousel-control-prev i,
+.carousel-anime .carousel-control-next i {
+  font-size: 30px;  /* Tăng kích thước mũi tên */
+  color: rgb(0, 0, 0);  /* Màu sắc mũi tên */
+}
+
+/* Hiệu ứng hover */
+.carousel-han .carousel-control-prev:hover,
+.carousel-han .carousel-control-next:hover,
+.carousel-china .carousel-control-prev:hover,
+.carousel-china .carousel-control-next:hover,
+.carousel-anime .carousel-control-prev:hover,
+.carousel-anime .carousel-control-next:hover {
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);  /* Bóng mờ đậm hơn khi hover */
+  background-color: rgb(255, 255, 255);  /* Giảm độ trong suốt để có màu nền rõ hơn */
+  transform: translateY(-50%) scale(1.1); /* Phóng to và di chuyển nút khi hover */
+}
+
+/* Ẩn nút mũi tên trái mặc định cho mỗi carousel */
+.carousel-han .carousel-control-prev,
+.carousel-china .carousel-control-prev,
+.carousel-anime .carousel-control-prev {
+  display: none; 
+}
+
+/* Ẩn tất cả các slide */
+.carousel-han .carousel-item,
+.carousel-china .carousel-item,
+.carousel-anime .carousel-item {
+  display: none; /* Ẩn tất cả các slide */
+}
+
+/* Chỉ hiển thị slide đang hoạt động */
+.carousel-han .carousel-item.active,
+.carousel-china .carousel-item.active,
+.carousel-anime .carousel-item.active {
+  display: block; /* Hiển thị slide hiện tại */
+}
+
+
+/* Nút mũi tên (Prev/Next) */
+.carousel-han .carousel-control-prev,
+.carousel-han .carousel-control-next,
+.carousel-china .carousel-control-prev,
+.carousel-china .carousel-control-next,
+.carousel-anime .carousel-control-prev,
+.carousel-anime .carousel-control-next {
+  position: absolute;
+  top: 41%;
+  margin-right: -30px;
+  margin-left: -30px;
+  z-index: 10;
+  transform: translateY(-50%);
+  background-color: rgb(255, 255, 255);  /* Nền trắng cho nút */
+  border-radius: 50%;
+  padding: 15px;  /* Tăng kích thước padding để nút lớn hơn */
+  width: 60px;  /* Kích thước nút lớn hơn */
+  height: 60px; /* Kích thước nút lớn hơn */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Thêm bóng mờ */
+  transition: box-shadow 0.3s, transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+/* Biểu tượng mũi tên Font Awesome */
+.carousel-han .carousel-control-prev i,
+.carousel-han .carousel-control-next i {
+  font-size: 30px;  /* Tăng kích thước mũi tên */
+  color: rgb(0, 0, 0);  /* Màu sắc mũi tên */
+}
+
+/* Hiệu ứng hover */
+.carousel-han .carousel-control-prev:hover,
+.carousel-han .carousel-control-next:hover {
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);  /* Bóng mờ đậm hơn khi hover */
+  background-color: rgb(255, 255, 255);  /* Giảm độ trong suốt để có màu nền rõ hơn */
+  transform: translateY(-50%) scale(1.1); /* Phóng to và di chuyển nút khi hover */
+}
+
+/* Ẩn nút mũi tên trái mặc định */
+.carousel-han .carousel-control-prev {
+  display: none; 
+}
+
+/* Thêm hiệu ứng chuyển động cho slide */
+.carousel-item {
+  flex: 0 0 100%;  /* Mỗi item chiếm 100% chiều rộng của carousel */
+  transition: opacity 0.3s ease; /* Thêm hiệu ứng mượt mà cho opacity */
+  position: relative;
+}
+
+/* Ẩn nút prev ban đầu */
+.carousel-control-prev {
+  display: none; /* Nút trái sẽ bị ẩn khi bắt đầu */
+}
+
+/* Hiển thị nút khi cần */
+.carousel-control-prev.show {
+  display: block; /* Chỉ hiển thị khi cần */
+}
+
+/* Nút next chỉ hiển thị nếu còn slide tiếp theo */
+.carousel-control-next.show {
+  display: block;
+}
+
+/* Nút next ẩn khi đã ở slide cuối */
+.carousel-control-next {
+  display: block; /* Nút next sẽ luôn hiển thị khi chưa đến cuối */
+}
+
+/* Hiển thị nút khi cần */
+.carousel-control-next.show {
+  display: block;
+}
+
+/* Ẩn nút next khi đến cuối */
+.carousel-control-next {
+  display: none; /* Nút next ẩn khi đến slide cuối */
+}
+
+.carousel-inner {
+  display: flex; /* Sử dụng flexbox để xếp các slide theo chiều ngang */
+  transition: transform 0.5s ease-in-out; /* Thêm hiệu ứng mượt mà khi chuyển slide */
+}
+
+/*Khung bình luận*/
+.section-box {
+  background-color: #1c1c1e;
+  padding: 15px;
+  border-radius: 0px;
+  border: 1px solid #333;
+}
+.border-right {
+  border-right: 1px solid #444;
+  
+}
+.list-group-item {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #ffffffc1;
+  padding: 10px 12px; /* Tăng khoảng cách để dễ nhìn hơn */
+}
+.rank-num {
+  width: 25px; /* Tăng kích thước để dễ nhìn hơn */
+  display: inline-block;
+  text-align: right;
+  margin-right: 8px; /* Điều chỉnh khoảng cách với icon */
+  font-weight: bold; /* Làm đậm số thứ hạng */
+  font-size: 25px; /* Tăng kích thước số */
+}
+
+/* Màu sắc cho mũi tên lên/xuống và dấu '-' */
+.rank-icon .fa-arrow-up {
+  color: #28a745; /* Màu xanh lá cho mũi tên đi lên */
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.rank-icon .fa-arrow-down {
+  color: #dc3545; /* Màu đỏ cho mũi tên đi xuống */
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.rank-icon .fa-minus {
+  color: #bbb; /* Màu xám trung tính cho dấu '-' */
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.list-group-item img {
+  width: 40px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.comment-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.comment-content p {
+  margin: 0;
+  font-size: 14px;
+}
+/* ===== NÚT "XEM THÊM" ===== */
+.view-more {
+  padding: 10px 20px;
+  background: none; /* Xóa nền */
+  color: rgba(129, 128, 128, 0.855);
+  font-size: 15px; /* Chữ lớn hơn */
+  font-weight: bold; /* In đậm */
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hiệu ứng khi hover */
+.view-more:hover {
+  transform: scale(1.1); /* Phóng to nhẹ */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Bóng mờ chữ */
+}
+
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: none;
+
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hiển thị overlay khi popup mở */
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== POPUP ===== */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #1c1c1e;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  max-height: 80vh; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Cho phép cuộn */
+  
+  text-align: center;
+  z-index: 1001;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Khi mở popup */
+.popup.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Hiệu ứng khi đóng popup */
+.popup.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+}
+
+/* Ẩn thanh cuộn trong popup nhưng vẫn cuộn được */
+.popup::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+
+body.no-scroll {
+  overflow: hidden;
+  padding-right: 15px; /* Thêm khoảng trống bằng độ rộng thanh cuộn */
+}
+
+/* ===== NÚT ĐÓNG POPUP ===== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 32px; /* Chữ lớn hơn */
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Hiệu ứng hover */
+.close-btn:hover {
+  transform: scale(1.3); /* Phóng to chữ "X" */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9); /* Hiệu ứng phát sáng */
+}
+
+/* Hiệu ứng khi nhấn */
+.close-btn:active {
+  transform: scale(1);
+  text-shadow: none;
+}
+
+/* ===== KHÓA CUỘN NỀN KHI POPUP MỞ ===== */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ===== HIỆU ỨNG CHO DANH SÁCH TRONG POPUP ===== */
+.list-group-item {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Phóng to nhẹ khi hover */
+.list-group-item:hover {
+  transform: scale(1.05);
+}
+
+
+.list-group-item {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hiệu ứng khi hover vào từng mục */
+.list-group-item:hover {
+  transform: scale(1.05); /* Phóng to nhẹ */
+}
+
+/*TOP 10*/
+
+/* Đảm bảo container căn đều các thẻ phim */
+.top-10-container-unique {
+  display: flex;
+  gap: 20px; /* Khoảng cách giữa các thẻ phim */
+  width: 100%; /* Đảm bảo container bao phủ toàn bộ chiều rộng */
+  overflow: hidden; /* Ẩn các phần không cần thiết */
+  transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển đổi slide */
+}
+
+/* Mỗi slide chứa 5 thẻ */
+.slide-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển đổi */
+  width: 200%; /* Gấp đôi vì có 2 slide */
+}
+
+.slide-top10 {
+  display: flex;
+  gap: 20px;
+  min-width: 100%;
+  justify-content: center;
+}
+.movie-card-unique {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #222 30%, #111 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card-unique img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-card-unique:hover {
+  transform: scale(1.08);
+}
+
+/* Các kiểu dáng cho thẻ phim */
+.movie-card-left-unique {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.movie-card-right-unique {
+  clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%);
+}
+
+.movie-info-unique {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 15px;
+  color: white;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+
+.ranking-unique {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.7);
+}
+
+.title-unique {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.episode-unique {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+/* Thông tin tập phim với nền cầu vồng nhẹ nhàng và khung */
+/* Thông tin tập phim với nền cầu vồng nhẹ nhàng */
+.episode-unique {
+  font-size: 1.0rem; /* Tăng kích thước chữ để làm nổi bật */
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  color: white; /* Màu chữ trắng để nổi bật trên nền */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Tăng độ bóng chữ để nổi bật hơn */
+  
+  /* Sử dụng gradient chỉ với 2 màu */
+  background: linear-gradient(135deg, rgba(255, 0, 255, 0.6), rgba(0, 255, 255, 0.6));
+  background-size: 300% 300%; /* Kích thước gradient lớn hơn vùng chứa */
+  animation: gradientAnimation 10s ease infinite; /* Thêm hiệu ứng chuyển động nền */
+  
+  /* Không làm mờ nền, giữ cho chữ nổi bật */
+  filter: none;
+}
+
+/* Animation cho nền gradient */
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+
+
+/* Nút cuộn */
+/* Đảm bảo container căn đều các thẻ phim */
+.top-10-container-unique {
+  display: flex;
+  justify-content: flex-start; /* Căn thẻ phim từ trái sang phải */
+  gap: 20px; /* Khoảng cách giữa các thẻ phim */
+  position: relative; /* Để nút cuộn được hiển thị bên ngoài container */
+  width: 100%; /* Đảm bảo container bao phủ toàn bộ chiều rộng */
+}
+
+/* Kiểu dáng các thẻ phim */
+.movie-card-unique {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #222 30%, #111 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0; /* Ngăn cản việc co giãn thẻ phim */
+}
+
+.movie-card-unique img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Hiệu ứng hover */
+.movie-card-unique:hover {
+  transform: scale(1.08);
+}
+
+/* Các kiểu dáng cho thẻ phim */
+.movie-card-left-unique {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.movie-card-right-unique {
+  clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%);
+}
+
+/* Thông tin phim */
+.movie-info-unique {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 15px;
+  color: white;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Số xếp hạng */
+.ranking-unique {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: -20px;
+  background-image: linear-gradient(45deg, #FFD700, #FFA500, #FF4500); /* Gradient vàng đậm */
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 6px rgba(255, 215, 0, 1), 
+               0px 0px 12px rgba(255, 215, 0, 0.8); /* Bóng nhỏ hơn trước */
+  transition: all 0.3s ease;
+}
+
+.ranking-unique:hover {
+  background-image: linear-gradient(45deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF, #0000FF, #8B00FF);
+  background-size: 300% 300%;
+  animation: rainbow 2s ease infinite, shadow-rainbow 2s ease infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: none;
+  transform: scale(1.05); /* Phóng to nhẹ hơn */
+}
+
+/* Animation cho gradient cầu vồng */
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animation cho bóng mờ cầu vồng nhỏ hơn */
+@keyframes shadow-rainbow {
+  0% { text-shadow: 0px 0px 8px #FF0000; }
+  20% { text-shadow: 0px 0px 8px #FF7F00; }
+  40% { text-shadow: 0px 0px 8px #FFFF00; }
+  60% { text-shadow: 0px 0px 8px #00FF00; }
+  80% { text-shadow: 0px 0px 8px #0000FF; }
+  100% { text-shadow: 0px 0px 8px #8B00FF; }
+}
+
+
+.title-unique {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.episode-unique {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Thông tin tập phim với nền cầu vồng nhẹ nhàng */
+.episode-unique {
+  font-size: 1.0rem; /* Tăng kích thước chữ để làm nổi bật */
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  color: white; /* Màu chữ trắng để nổi bật trên nền */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Tăng độ bóng chữ để nổi bật hơn */
+  
+  /* Sử dụng gradient chỉ với 2 màu */
+  background: linear-gradient(135deg, rgba(255, 0, 255, 0.6), rgba(0, 255, 255, 0.6));
+  background-size: 300% 300%; /* Kích thước gradient lớn hơn vùng chứa */
+  animation: gradientAnimation 10s ease infinite; /* Thêm hiệu ứng chuyển động nền */
+  
+  /* Không làm mờ nền, giữ cho chữ nổi bật */
+  filter: none;
+}
+
+/* Animation cho nền gradient */
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Nút cuộn */
+/* Nút chuyển trái/phải */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Đảm bảo nút luôn nằm trên thẻ phim */
+}
+
+/* Hiệu ứng hover */
+.scroll-btn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Nút chuyển trái */
+.prev-btn {
+  left: -50px; /* Đặt nút trái ngoài container */
+  display: block; /* Hiển thị nút trái */
+}
+
+/* Nút chuyển phải */
+.next-btn {
+  right: -50px; /* Đặt nút phải ngoài container */
+  display: block; /* Hiển thị nút phải */
+}
+
+/* Điều chỉnh layout của container */
+.container.mt-4 {
+  position: relative;
+  padding: 0 20px; /* Thêm khoảng cách cho nội dung */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+/* TM.12 và PĐ.9 nằm cạnh nhau, với màu sắc đối nghịch và không có khoảng cách */
+.TM-12, .PĐ-9 {
+  font-size: 0.7rem; /* Tăng kích thước chữ để làm nổi bật */
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+  color: white; /* Màu chữ trắng để nổi bật trên nền */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Tăng độ bóng chữ để nổi bật hơn */
+  
+  /* Sử dụng màu sắc đối nghịch */
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.8), rgba(255, 204, 0, 0.8)); /* Xanh dương đậm và vàng */
+  background-size: 300% 300%; /* Kích thước gradient lớn hơn vùng chứa */
+  animation: gradientAnimation 10s ease infinite; /* Thêm hiệu ứng chuyển động nền */
+  
+  /* Không làm mờ nền, giữ cho chữ nổi bật */
+  filter: none;
+}
+
+/* Animation cho nền gradient */
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Cho phép TM.12 và PĐ.9 dính lại với nhau (không có khoảng cách) */
+.TM-12 + .PĐ-9 {
+  margin-left: 0px; /* Không có khoảng cách giữa TM.12 và PĐ.9 */
+}
+
+/* Thêm một số kiểu dáng chung cho các phần tử */
+.TM-12 {
+  background-color: rgba(0, 123, 255, 0.8); /* Màu xanh dương đậm cho TM.12 */
+}
+
+.PĐ-9 {
+  background-color: rgba(255, 204, 0, 0.8); /* Màu vàng tươi cho PĐ.9 */
+}
+
+a{
+  text-decoration: none;
+}
+
+c {
+  font-size: 1.6em;
+  font-style: italic;
+  font-weight: bold;
+  color: #00ff11; /* chọn 1 màu chính */
+  text-shadow:
+    0 0 5px #00ff11,
+    0 0 10px #ff00d4,
+    0 0 15px #ffef00,
+    0 0 20px #00ff88;
+}
+ 
+small {
+  font-size: 1em;
+
+  font-weight: 700;            /* đậm hơn rõ ràng */
+  color: #00ffd9;              /* xanh dương nhạt ánh tím */
+  text-shadow:
+    0 0 2px #6ec6ff,
+    0 0 4px #7c4dff,           /* tím sáng */
+    0 0 6px #82b1ff;           /* xanh pastel */
+}

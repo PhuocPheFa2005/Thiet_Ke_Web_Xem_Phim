@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK Phim  - lồng tiếng cực mạnh  </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles_phimbo.css">
+    <link rel="stylesheet" href="/css/styles_dangky.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar d-flex justify-content-between">
+            <a class="navbar-brand" href="/html/trangchu.html">
+                <img src="/images/logo.webp" alt="APK Movie">
+                <span data-key="site-name">APK</span>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phim, diễn viên" data-key="search-placeholder">
+            </div>
+            <button class="menu-toggle">☰</button>
+            <div class="menu">
+                <a href="/html/chude.html" data-key="menu-topic">Chủ Đề</a>
+                <a href="/html/phimle.html" data-key="menu-movies">Phim Lẻ</a>
+                <a href="/html/phimbo.html" data-key="menu-series">Phim Bộ</a>
+                <div class="dropdown country-dropdown">
+                    <a class="dropdown-toggle" data-key="menu-country">Quốc gia</a>
+                    <div class="dropdown-menu">
+                        <a href="/html/phimVietNam.html" class="dropdown-item">Việt Nam</a>
+                        <a href="/html/phimAnh.html" class="dropdown-item">Anh</a>
+                        <a href="/html/phimMy.html" class="dropdown-item">Mỹ</a>
+                        <a href="/html/phimPhap.html" class="dropdown-item">Pháp</a>
+                    </div>
+                </div>
+                <a href="/html/Dienvien.html" data-key="menu-actors">Diễn Viên</a>
+            </div>
+            <div class="auth-buttons">
+                <div id="user-info" class="user-info" style="display: none;">
+                </div>
+                
+                <button class="btn btn-outline-light" data-key="btn-signup" onclick="openRegisterForm()">Đăng Ký</button>
+                <button class="btn btn-primary" data-key="btn-login" onclick="openLoginForm()">Đăng Nhập</button>
+              </div>
+              
+
+              <div id="overlay" class="overlay" style="display: none;">
+                <div class="form-container">
+                  <span class="close-btn" onclick="closeForm()">✖</span>
+              
+
+                  <div id="login-form" class="form-content">
+                    <h2>Đăng nhập</h2>
+                    <p>Nếu bạn chưa có tài khoản, <a href="#" onclick="showRegister()">đăng ký ngay</a></p>
+                    <input type="email" placeholder="Email (admin@example.com)" id="login-email" required />
+                    <input type="password" placeholder="Mật khẩu (admin123)" id="login-password" required />
+                    <button class="btn-submit" onclick="loginUser()">Đăng nhập</button>
+                    <a href="#">Quên mật khẩu?</a>
+                  </div>
+              
+              
+              
+
+                  <div id="register-form" class="form-content" style="display: none;">
+                    <h2>Đăng ký</h2>
+                    <p>Nếu bạn đã có tài khoản, <a href="#" onclick="showLogin()">đăng nhập</a></p>
+                    <input type="text" placeholder="Tên hiển thị" id="register-username" required />
+                    <input type="email" placeholder="Email" id="register-email" required />
+                    <input type="password" placeholder="Mật khẩu" id="register-password" required />
+                    <input type="password" placeholder="Nhập lại mật khẩu" id="register-confirm-password" required />
+                    <button class="btn-submit" onclick="registerUser()">Đăng ký</button>
+                  </div>
+              
+
+                  <div id="edit-profile-form" class="form-content" style="display: none;">
+                    <h2>Chỉnh sửa thông tin</h2>
+              
+         
+                    <div class="avatar-preview">
+                      <label for="edit-avatar">
+                        <img id="avatar-preview-img" src="/images/tron1.webp" alt="Ảnh đại diện" />
+                      </label>
+                    </div>
+              
+              
+                    <input type="file" id="edit-avatar" accept="image/*" onchange="previewAvatar()" style="display: none;" />
+              
+                    <label for="edit-username">Tên hiển thị</label>
+                    <input type="text" id="edit-username" placeholder="Tên hiển thị" required />
+              
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" placeholder="Email" required />
+              
+                    <div class="form-buttons">
+                      <button class="btn-submit" onclick="saveProfileChanges()">💾 Lưu thay đổi</button>
+                      <button class="btn-submit logout-btn" onclick="logoutUser()">🚪 Đăng xuất</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <h1 class="section-title">lồng tiếng cực mạnh</h1>
+        <button class="btn btn-primary" id="openFilter" data-key="filter">
+            <i class="fas fa-filter"></i> Bộ Lọc
+        </button>
+        <div id="filterModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Bộ Lọc</h3>
+                <label for="yearFilter">Năm:</label>
+                <select id="yearFilter">
+                    <option value="" data-key="select-year">Chọn năm</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                </select>
+                <button id="applyFilter" class="btn btn-success">Áp dụng</button>
+            </div>
+        </div>
+        <div class="movie-grid">
+            <div class="movie-item" 
+            data-title="Thám Tử Lừng Danh Conan Movie 22: Kẻ Hành Pháp Zero" data-year="2018" 
+            data-desc="Conan Movie 22 xoay quanh nhân vật Tooru 'Zero' Amuro và nghi vấn cảnh sát trưởng Kuroda là một trong những thành phần của tổ chức áo đen. "Edge of Ocean", một cơ sở mới của Vịnh Tokyo sẽ là nơi tổ chức Hội nghị Thượng đỉnh Tokyo..."
+                data-imdb="8.5" data-age="| T13" data-duration="| 1h 50m " data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình"
+                data-image="../images/longtieng1.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng1.webp" alt="Thám Tử Lừng Danh Conan Movie 22: Kẻ Hành Pháp Zero">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 22: Kẻ Hành Pháp Zero</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 14: Con Tàu Biến Mất Giữa Trời Xanh" data-year="2010" 
+            data-desc="Sở cảnh sát nhận được thông tin về một vụ nổ ở Viện vi sinh học Tokyo thuộc thành phố Tokyo Nishitama do một nhóm khủng bố mang tên Red..." 
+            data-imdb="8.1"data-age="| T13" data-duration="| 1h 43m " 
+            data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình"
+                data-image="../images/longtieng2.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng2.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 14: Con Tàu Biến Mất Giữa Trời Xanh">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 14: Con Tàu Biến Mất Giữa Trời Xanh</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 19: Hoa Hướng Dương Rực Lửa" data-year="2015" 
+            data-desc="Bộ phim xoay quanh việc Kaitou Kid tuyên bố trộm bức họa ..." 
+            data-imdb="7.7"data-age="| T13" data-duration="| 1h 52m " 
+            data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình "
+            data-image="../images/longtieng3.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng3.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 19: Hoa Hướng Dương Rực Lửa">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 19: Hoa Hướng Dương Rực Lửa </p>
+            </div>
+            
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 24: Viên Đạn Đỏ" 
+            data-year="2021" 
+            data-desc="Thế vận hội thể thao lớn nhất thế giới được tổ chức tại Tokyo, Nhật Bản thu hút rất nhiều sự chú ý. Khi sự kiện ra mắt con tàu siêu tốc với tốc độ 1000km/h diễn ra cũng là lúc hàng loạt các vụ bắt cóc xảy ra! Gia tộc hiểm ác tụ tập tại đây sẽ gây ra một loạt sự kiện chấn động thế giới!." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="| 1h 50m " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình "
+                data-image="../images/longtieng4.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng4.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 24: Viên Đạn Đỏ">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 24: Viên Đạn Đỏ</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 12: Tận Cùng Của Sự Sợ Hã" 
+            data-year="2008" 
+            data-desc="Conan và mọi người được mời đến tham gia buổi biểu diễn đầu tiên của nhà hát Doumoto..." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="| 1h 55m " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình"
+                data-image="../images/longtieng5.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng5.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 12: Tận Cùng Của Sự Sợ Hã">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 12: Tận Cùng Của Sự Sợ Hã</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 17: Con Mắt Bí Ẩn Ngoài Biển Xa" 
+            data-year="2013" 
+            data-desc="Bối cảnh phim xảy ra trên con tàu Aegis hiện đại, trên tàu có đầy đủ lực lượng của Bộ quốc phòng cũng như của Lực lượng tự vệ bờ biển Nhật Bản. Ran bị đe dọa, và Conan bắt buộc phải đối đầu với một tên tội phạm nguy hiểm." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="| 1h 50 " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình"
+                data-image="../images/longtieng6.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng6.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 17: Con Mắt Bí Ẩn Ngoài Biển Xa">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 17: Con Mắt Bí Ẩn Ngoài Biển Xa</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 10: Lễ Cầu Hồn Của Thám Tử" 
+            data-year="2021" 
+            data-desc="Một người đàn ông bí ẩn hỏi Kogoro để đến Yokohama. He asked Ran, Conan and the others go with him..." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="| 1h 50m " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình "
+                data-image="../images/longtieng7.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng7.webp" 
+                    alt="Học Viện Umbrella">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 10: Lễ Cầu Hồn Của Thám Tử</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 15: 15 Phút Tĩnh Lặng" 
+            data-year="2004" 
+            data-desc="Câu chuyện bắt đầu với một tên được coi là mối đe dọa của chính phủ Nhật Bản, nhưng óc siêu phàm Conan sẽ ngăn chặn mọi tai họa có thể ập đến khi đường hầm xe điện ngầm bị nổ tung..." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="|  " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình"
+                data-image="../images/longtieng8.webp">
+                <div class="movie-container">
+                    <img src="../images/longtieng8.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 15: 15 Phút Tĩnh Lặng">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p>Thám Tử Lừng Danh Conan Movie 15: 15 Phút Tĩnh Lặng</p>
+            </div>
+
+
+            <div class="movie-item" data-title="Thám Tử Lừng Danh Conan Movie 21: Bản Tình Ca Màu Đỏ Thẫm" 
+            data-year="2021" 
+            data-desc="Trong hành trình phiêu lưu đầy hiểm nguy trên khắp thế giới hậu tận thế, cậu bé nửa người nửa nai đáng yêu tìm kiếm khởi đầu mới cùng một người bảo vệ cộc cằn." 
+            data-imdb="7.7"
+                data-age="| T13" 
+                data-duration="|   " 
+                data-genres="Hành Động, Hình Sự, Bí Ẩn, Anime, Hoạt Hình "
+                data-image="../images/longtieng9.webp" >
+                <div class="movie-container">
+                    <img src="../images/longtieng9.webp" 
+                    alt="Thám Tử Lừng Danh Conan Movie 21: Bản Tình Ca Màu Đỏ Thẫm">
+                    <span class="label">P.Đề</span>
+                </div>
+                <p> Thám Tử Lừng Danh Conan Movie 21: Bản Tình Ca Màu Đỏ Thẫm </p>
+            </div>
+
+
+        </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage" class="page-btn" data-key="previous-page">« Trước</button>
+            <span id="pageNumber">1</span>
+            <button id="nextPage" class="page-btn" data-key="next-page">Tiếp »</button>
+        </div>
+        <div id="movieTooltip" class="movie-tooltip">
+            <img id="tooltipImage" src="" alt="Poster">
+            <div class="tooltip-content">
+                <h3 id="tooltipTitle"></h3>
+                <p id="tooltipYear"></p>
+                <p id="tooltipDesc"></p>
+                <div class="tooltip-actions">
+                    <button class="watch-now">▶ Xem ngay</button>
+                    <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                    <button class="details-btn"><i class="fa-solid fa-info"></i></button>
+                </div>
+                <div class="movie-info">
+                    <span class="imdb-rating"><strong></strong></span>
+                    <span class="age-rating"></span>
+                    <span class="release-year"></span>
+                    <span class="duration"></span>
+                </div>
+                <div class="movie-genres">
+                    <span></span> • <span></span> • <span></span>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <div class="footer-top">
+            <span class="sovereignty" data-key="territorial-sovereignty">⭐ Hoàng Sa & Trường Sa là của Việt Nam!</span>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/images/logo.webp" alt="APK Movie Logo">
+                <h2>APK Movie</h2>
+                <p data-key="phim-hay-apkmovie">Phim hay APK Movie</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://web.telegram.org/" target="_blank"><img src="/images/tele.webp" alt="Telegram"></a>
+                <a href="https://x.com/" target="_blank"><img src="/images/x.webp" alt="X"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="/images/fb.webp" alt="Facebook"></a>
+                <a href="https://tiktok.com/" target="_blank"><img src="/images/tiktok.webp" alt="TikTok"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="/images/ytb.webp" alt="YouTube"></a>
+                <a href="https://www.threads.net/" target="_blank"><img src="/images/threads.webp" alt="Threads"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="/images/ins.webp" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="/html/chinhsachbaomat.html" data-key="chinhsachbaomat">Chính sách bảo mật</a>
+            <a href="/html/dieukhoan.html" data-key="dieukhoan">Điều khoản sử dụng</a>
+            <a href="/html/gioithieu.html" data-key="gioithieu">Giới thiệu</a>
+            <a href="/html/lienhe.html" data-key="lienhe">Liên hệ</a>
+        </div>
+        <div class="footer-categories">
+            <a href="#">Dongphim</a>
+            <a href="#">Ghienphim</a>
+            <a href="#">Motphim</a>
+            <a href="#">Subnhanh</a>
+        </div>
+        <div class="footer-description" data-key="quangcao">
+            APK Movie - Phim hay APK Movie - Trang xem phim online chất lượng cao miễn phí Vietsub, thuyết minh, lồng
+            tiếng
+            full
+            HD.
+            Kho phim mới không lỡ, phim chiếu rạp, phim bộ, phim lẻ từ nhiều quốc gia như Việt Nam, Hàn Quốc, Trung
+            Quốc,
+            Thái Lan,
+            Nhật Bản, Âu Mỹ... đa dạng thể loại. Khám phá nền tảng phim trực tuyến hay nhất 2024 chất lượng 4K!
+        </div>
+        <div class="footer-copyright">
+            © 2025 APK Movie
+        </div>
+        </footer>
+        <div class="back-to-top" onclick="scrollToTop()">▲</div>
+        <script src="/js/script_dangky.js"></script>
+        <script src="/js/script_phimbo.js"></script>
+</body>
+
+</html>
